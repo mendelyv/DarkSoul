@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerInput : MonoBehaviour {
+public class PlayerInput : MonoBehaviour
+{
 
-    //====变量区
+    public bool interactive = true;//是否可交互，控制模块的软开关
+
+    #region====变量区
 
     public string keyForward = "w";
     public string keyBack = "s";
@@ -14,13 +17,30 @@ public class PlayerInput : MonoBehaviour {
     public float dirForward;//前后方向的移动量
     public float dirRight;//左右方向的移动量
 
-	void Start () {
-		
+    private float targetDirForward;//前后移动方向的目标值
+    private float targetDirRight;//左右
+    private float velocityForward;
+    private float velocityRight;
+
+    #endregion
+
+    void Start () {
+        
 	}
 	
 	void Update () {
-        dirForward = (Input.GetKey(keyForward) ? 1.0f : 0.0f) - (Input.GetKey(keyBack) ? 1.0f : 0.0f);
-        dirRight = (Input.GetKey(keyRight) ? 1.0f : 0.0f) - (Input.GetKey(keyLeft) ? 1.0f : 0.0f); 
+
+        targetDirForward = (Input.GetKey(keyForward) ? 1.0f : 0.0f) - (Input.GetKey(keyBack) ? 1.0f : 0.0f);
+        targetDirRight = (Input.GetKey(keyRight) ? 1.0f : 0.0f) - (Input.GetKey(keyLeft) ? 1.0f : 0.0f);
+
+        if( ! interactive)//使用软开关控制该模块是否可以使用，直接将组件勾选掉缺陷就是当重新开启时组件中的数据会有可能混乱
+        {
+            targetDirForward = 0.0f;
+            targetDirRight = 0.0f;
+        }
+
+        dirForward = Mathf.SmoothDamp(dirForward, targetDirForward, ref velocityForward, 0.1f);
+        dirRight = Mathf.SmoothDamp(dirRight, targetDirRight, ref velocityRight, 0.1f);
 
 	}
 }
