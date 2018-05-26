@@ -17,6 +17,9 @@ public class PlayerInput : MonoBehaviour
     public float dirForward;//前后方向的移动量
     public float dirRight;//左右方向的移动量
 
+    public float Dirmag;//行走量
+    public Vector3 Dirvec;//行走方向向量
+
     private float targetDirForward;//前后移动方向的目标值
     private float targetDirRight;//左右
     private float velocityForward;
@@ -42,5 +45,10 @@ public class PlayerInput : MonoBehaviour
         dirForward = Mathf.SmoothDamp(dirForward, targetDirForward, ref velocityForward, 0.1f);
         dirRight = Mathf.SmoothDamp(dirRight, targetDirRight, ref velocityRight, 0.1f);
 
+        Dirmag = Mathf.Sqrt((dirForward * dirForward) + (dirRight * dirRight));
+        Dirvec = dirRight * transform.right + dirForward * transform.forward;
+
 	}
+
+    
 }
