@@ -213,10 +213,17 @@ MonoBehaviour:
   keyBack: s
   keyLeft: a
   keyRight: d
+  keyA: left shift
+  keyB: space
+  keyC: 
+  keyD: 
   dirForward: 0
   dirRight: 0
   Dirmag: 0
   Dirvec: {x: 0, y: 0, z: 0}
+  run: 0
+  jump: 0
+  lastJump: 0
 --- !u!114 &321607461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -231,6 +238,7 @@ MonoBehaviour:
   model: {fileID: 1032848235}
   pInput: {fileID: 0}
   walkSpeed: 1.4
+  runMultiplier: 2.7
   anim: {fileID: 0}
 --- !u!136 &321607462
 CapsuleCollider:
