@@ -24,7 +24,7 @@ public class PlayerInput : MonoBehaviour
     public float dirRight;//左右方向的移动量，随键盘按键时间的长短从0增加到1
 
     public float Dirmag;//两个方向键同时按下时的斜向行走量，注意根号2的问题
-    public Vector3 Dirvec;//行走方向向量
+    public Vector3 planarVec;//行走方向向量
 
     // press signal
     public bool run = false;
@@ -69,8 +69,9 @@ public class PlayerInput : MonoBehaviour
 
         //计算多方向键入的位移量
         Dirmag = Mathf.Sqrt((_dirForward * _dirForward) + (_dirRight * _dirRight));
+        
         //计算多方向键入的方向向量，比如 w a 一起按为左前方
-        Dirvec = _dirRight * transform.right + _dirForward * transform.forward;
+        planarVec = _dirRight * transform.right + _dirForward * transform.forward;
 
         run = Input.GetKey(keyA);
 

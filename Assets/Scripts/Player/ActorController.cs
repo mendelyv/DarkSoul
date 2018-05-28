@@ -14,6 +14,7 @@ public class ActorController : MonoBehaviour {
     private Rigidbody rig;
 
     private Vector3 movingVec;
+    public bool lockPlanar = false;
 
 	void Awake () {
         anim = model.GetComponent<Animator>();
@@ -30,9 +31,10 @@ public class ActorController : MonoBehaviour {
 
         if(pInput.Dirmag > 0.1f)
         {
-            model.transform.forward = Vector3.Slerp(model.transform.forward, pInput.Dirvec, 0.25f); ;
+            model.transform.forward = Vector3.Slerp(model.transform.forward, pInput.planarVec, 0.25f); ;
         }
-        movingVec = pInput.Dirmag * model.transform.forward * walkSpeed * ((pInput.run)?runMultiplier:1.0f);
+        if(!lockPlanar)
+            movingVec = pInput.Dirmag * model.transform.forward * walkSpeed * ((pInput.run)?runMultiplier:1.0f);
 
 	}
 
@@ -43,6 +45,18 @@ public class ActorController : MonoBehaviour {
         rig.velocity = new Vector3(movingVec.x, rig.velocity.y, movingVec.z);
     }
 
+
+    public void OnJumpEnter()
+    {
+        pInput.interactive = false;
+        lockPlanar = true;
+    }
+
+    public void OnJumpExit()
+    {
+        pInput.interactive = true;
+        lockPlanar = false;
+    }
 
 
 //class end
