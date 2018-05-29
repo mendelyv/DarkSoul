@@ -220,7 +220,7 @@ MonoBehaviour:
   dirForward: 0
   dirRight: 0
   Dirmag: 0
-  Dirvec: {x: 0, y: 0, z: 0}
+  planarVec: {x: 0, y: 0, z: 0}
   run: 0
   jump: 0
   lastJump: 0
@@ -239,7 +239,9 @@ MonoBehaviour:
   pInput: {fileID: 0}
   walkSpeed: 1.4
   runMultiplier: 2.7
+  jumpVelocity: 3.5
   anim: {fileID: 0}
+  lockPlanar: 0
 --- !u!136 &321607462
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -363,7 +365,7 @@ Transform:
   m_GameObject: {fileID: 629223441}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3

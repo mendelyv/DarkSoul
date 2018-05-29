@@ -8,12 +8,14 @@ public class ActorController : MonoBehaviour {
     public PlayerInput pInput;
     public float walkSpeed = 2.0f;
     public float runMultiplier = 2.0f;
+    public float jumpVelocity = 3.0f;
 
     [SerializeField]
     private Animator anim;
     private Rigidbody rig;
 
     private Vector3 movingVec;
+    private Vector3 thrustVec;
     public bool lockPlanar = false;
 
 	void Awake () {
@@ -42,7 +44,8 @@ public class ActorController : MonoBehaviour {
     {
         //rig.position += movingVec * Time.fixedDeltaTime;
         //rig.velocity = movingVec;//并未算入地心引力
-        rig.velocity = new Vector3(movingVec.x, rig.velocity.y, movingVec.z);
+        rig.velocity = new Vector3(movingVec.x, rig.velocity.y, movingVec.z) + thrustVec;
+        thrustVec = Vector3.zero;
     }
 
 
@@ -50,6 +53,7 @@ public class ActorController : MonoBehaviour {
     {
         pInput.interactive = false;
         lockPlanar = true;
+        thrustVec = new Vector3(0, jumpVelocity, 0);
     }
 
     public void OnJumpExit()
