@@ -20,7 +20,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: 
   m_RootView: {fileID: 4}
-  m_MinSize: {x: 950, y: 300}
+  m_MinSize: {x: 950, y: 521}
   m_MaxSize: {x: 10000, y: 10000}
 --- !u!114 &2
 MonoBehaviour:
@@ -67,10 +67,10 @@ MonoBehaviour:
     y: 0
     width: 386
     height: 947
-  m_MinSize: {x: 234, y: 492}
-  m_MaxSize: {x: 10004, y: 14042}
+  m_MinSize: {x: 234, y: 471}
+  m_MaxSize: {x: 10004, y: 14021}
   vertical: 1
-  controlID: 75
+  controlID: 72
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -136,10 +136,10 @@ MonoBehaviour:
     y: 30
     width: 1920
     height: 947
-  m_MinSize: {x: 713, y: 492}
-  m_MaxSize: {x: 18008, y: 14042}
+  m_MinSize: {x: 713, y: 471}
+  m_MaxSize: {x: 18008, y: 14021}
   vertical: 0
-  controlID: 137
+  controlID: 141
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -183,7 +183,7 @@ MonoBehaviour:
   m_MinSize: {x: 202, y: 342}
   m_MaxSize: {x: 4002, y: 8042}
   vertical: 1
-  controlID: 29
+  controlID: 50
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -202,8 +202,8 @@ MonoBehaviour:
     y: 0
     width: 386
     height: 453
-  m_MinSize: {x: 204, y: 221}
-  m_MaxSize: {x: 4004, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
@@ -322,7 +322,7 @@ MonoBehaviour:
     - e00: 1
       e01: 0
       e02: 0
-      e03: -220.625
+      e03: -216.625
       e10: 0
       e11: 1
       e12: 0
@@ -449,8 +449,8 @@ MonoBehaviour:
   m_PersistentViewDataDictionary: {fileID: 0}
   m_TreeViewState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 2c2b0000
-    m_LastClickedID: 0
+    m_SelectedIDs: f6290000
+    m_LastClickedID: 10742
     m_ExpandedIDs: 9efbffff00000000ea290000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -547,18 +547,18 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets/Models/YBot/Extra
+    - Assets/Scripts/Player
   m_ViewMode: 1
   m_StartGridSize: 16
   m_LastFolders:
-  - Assets/Models/YBot/Extra
+  - Assets/Scripts/Player
   m_LastFoldersGridSize: 16
   m_LastProjectPath: D:\Unity Projects\DarkSoul
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 8e270000
-    m_LastClickedID: 10126
+    m_SelectedIDs: 8a270000
+    m_LastClickedID: 10122
     m_ExpandedIDs: 00000000802700009e270000262800003828000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -587,7 +587,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000802700009e270000
+    m_ExpandedIDs: 00000000802700009e2700002628000038280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -618,15 +618,15 @@ MonoBehaviour:
     m_ExpandedInstanceIDs: 8c290000722900009029000094290000d2280000442900002c29000072280000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: Scripts
-      m_OriginalName: Scripts
+      m_Name: OnGroundSensor
+      m_OriginalName: OnGroundSensor
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 10142
+      m_UserData: 11132
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
       m_OriginalEventType: 0
@@ -780,7 +780,7 @@ MonoBehaviour:
   m_Rotation:
     m_Target: {x: -0.11703187, y: 0.013411612, z: -0.0015805998, w: -0.9930364}
     speed: 2
-    m_Value: {x: -0.11703187, y: 0.013411612, z: -0.0015805998, w: -0.9930364}
+    m_Value: {x: -0.11703187, y: 0.013411612, z: -0.0015805998, w: -0.99303645}
   m_Size:
     m_Target: 13.02565
     speed: 2
