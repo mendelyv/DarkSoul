@@ -48,7 +48,9 @@ public class ActorController : MonoBehaviour {
         thrustVec = Vector3.zero;
     }
 
-
+    /// <summary>
+    /// Message 
+    /// </summary>
     public void OnJumpEnter()
     {
         pInput.interactive = false;
@@ -60,6 +62,18 @@ public class ActorController : MonoBehaviour {
     {
         pInput.interactive = true;
         lockPlanar = false;
+    }
+
+    public void IsGround()
+    {
+        anim.SetBool("isGround", true);
+    }
+
+
+
+    public void IsNotGround()
+    {
+        anim.SetBool("isGround", false);
     }
 
 
