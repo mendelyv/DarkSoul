@@ -58,17 +58,11 @@ public class ActorController : MonoBehaviour {
         thrustVec = new Vector3(0, jumpVelocity, 0);
     }
 
-    public void OnJumpExit()
-    {
-        pInput.interactive = true;
-        lockPlanar = false;
-    }
-
+   
     public void IsGround()
     {
         anim.SetBool("isGround", true);
     }
-
 
 
     public void IsNotGround()
@@ -76,6 +70,17 @@ public class ActorController : MonoBehaviour {
         anim.SetBool("isGround", false);
     }
 
+    public void OnGroundEnter()
+    {
+        pInput.interactive = true;
+        lockPlanar = false;
+    }
+
+    public void OnFallEnter()
+    {
+        pInput.interactive = false;
+        lockPlanar = true;
+    }
 
 //class end
 }

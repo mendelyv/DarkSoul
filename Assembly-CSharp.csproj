@@ -51,7 +51,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\PlayerInput.cs" />
+     <Compile Include="Assets\FSMOnEnter.cs" />
+     <Compile Include="Assets\FSMOnExit.cs" />
+     <Compile Include="Assets\Scripts\Anim\FSMClearSignals.cs" />
+     <Compile Include="Assets\Scripts\Player\ActorController.cs" />
+     <Compile Include="Assets\Scripts\Player\OnGroundSensor.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
