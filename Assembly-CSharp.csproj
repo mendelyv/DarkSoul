@@ -51,9 +51,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\FSMOnEnter.cs" />
-     <Compile Include="Assets\FSMOnExit.cs" />
-     <Compile Include="Assets\Scripts\Anim\FSMClearSignals.cs" />
+     <Compile Include="Assets\Scripts\FSM\FSMClearSignals.cs" />
+     <Compile Include="Assets\Scripts\FSM\FSMOnEnter.cs" />
+     <Compile Include="Assets\Scripts\FSM\FSMOnExit.cs" />
      <Compile Include="Assets\Scripts\Player\ActorController.cs" />
      <Compile Include="Assets\Scripts\Player\OnGroundSensor.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />

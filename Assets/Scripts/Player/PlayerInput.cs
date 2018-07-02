@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// class name : PlayerInput
+/// description : 玩家输入控制器
+/// time : 2018.7.2
+/// @author : 杨浩然
+/// </summary>
 public class PlayerInput : MonoBehaviour
 {
 
