@@ -16,7 +16,10 @@ public class ActorController : MonoBehaviour {
     public PlayerInput pInput;
     public float walkSpeed = 2.0f;
     public float runMultiplier = 2.0f;
+    //跳跃冲量
     public float jumpVelocity = 3.0f;
+    //翻滚冲量
+    public float rollVelocity = 1.0f;
 
     [SerializeField]
     private Animator anim;
@@ -95,6 +98,13 @@ public class ActorController : MonoBehaviour {
     {
         pInput.interactive = false;
         lockPlanar = true;
+    }
+
+    public void OnRollEnter()
+    {
+        pInput.interactive = false;
+        lockPlanar = true;
+        thrustVec = new Vector3(0, rollVelocity, 0);
     }
 
 //class end

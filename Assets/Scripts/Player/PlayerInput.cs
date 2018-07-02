@@ -15,6 +15,7 @@ public class PlayerInput : MonoBehaviour
     public bool interactive = true;//是否可交互，控制模块的软开关
 
     #region====变量区
+
     [Header("===== Key Setting =====")]
     public string keyForward = "w";
     public string keyBack = "s";

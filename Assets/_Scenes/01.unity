@@ -282,6 +282,7 @@ MonoBehaviour:
   walkSpeed: 1.4
   runMultiplier: 2.7
   jumpVelocity: 3.5
+  rollVelocity: 3
   anim: {fileID: 0}
   lockPlanar: 0
 --- !u!136 &321607462
