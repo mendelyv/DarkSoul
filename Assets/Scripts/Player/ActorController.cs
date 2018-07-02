@@ -20,6 +20,8 @@ public class ActorController : MonoBehaviour {
     public float jumpVelocity = 3.0f;
     //翻滚冲量
     public float rollVelocity = 1.0f;
+    //后跳冲量
+    public float jabVelocity = 2.0f;
 
     [SerializeField]
     private Animator anim;
@@ -105,6 +107,20 @@ public class ActorController : MonoBehaviour {
         pInput.interactive = false;
         lockPlanar = true;
         thrustVec = new Vector3(0, rollVelocity, 0);
+    }
+
+    public  void OnJabEnter()
+    {
+        pInput.interactive = false;
+        lockPlanar = true;
+    }
+
+    //后跳的冲量由动画曲线实时控制并实时调用
+    public void OnJabUpdate()
+    {
+        //如果直接这样后跳，会一瞬间完成后跳的距离
+        //thrustVec = model.transform.forward * (-jabVelocity);
+        thrustVec = model.transform.forward * anim.GetFloat("jabVelocity");
     }
 
 //class end

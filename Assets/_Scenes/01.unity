@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   capcol: {fileID: 321607462}
-  offset: 0.1
+  offset: 0.3
 --- !u!1 &201435969
 GameObject:
   m_ObjectHideFlags: 0
@@ -283,6 +283,7 @@ MonoBehaviour:
   runMultiplier: 2.7
   jumpVelocity: 3.5
   rollVelocity: 3
+  jabVelocity: 1
   anim: {fileID: 0}
   lockPlanar: 0
 --- !u!136 &321607462
