@@ -50,6 +50,8 @@ public class PlayerInput : MonoBehaviour
     // trigger once signal
     public bool jump = false;
     public bool lastJump = false;
+    public bool attack = false;
+    public bool lastAttack = false;
 
     // double trigger
 
@@ -107,6 +109,17 @@ public class PlayerInput : MonoBehaviour
             jump = false;
         }
         lastJump = tempJump;
+
+        bool tempAttack= Input.GetKey(keyC);
+        if (tempJump != lastAttack && tempAttack)
+        {
+            attack = true;
+        }
+        else
+        {
+            attack = false;
+        }
+        lastAttack = tempAttack;
 
 	}
 

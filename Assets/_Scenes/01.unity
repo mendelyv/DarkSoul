@@ -261,7 +261,7 @@ MonoBehaviour:
   rightArrow: right
   keyA: left shift
   keyB: space
-  keyC: 
+  keyC: k
   keyD: 
   dUp: 0
   dRight: 0
@@ -272,6 +272,8 @@ MonoBehaviour:
   run: 0
   jump: 0
   lastJump: 0
+  attack: 0
+  lastAttack: 0
 --- !u!114 &321607461
 MonoBehaviour:
   m_ObjectHideFlags: 0

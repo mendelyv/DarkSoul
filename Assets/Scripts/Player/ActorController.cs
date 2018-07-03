@@ -33,10 +33,15 @@ public class ActorController : MonoBehaviour {
     //移动锁定
     public bool lockPlanar = false;
 
+    //状态机动画图层index
+    private int attackLayerIndex;
+
 	void Awake () {
         anim = model.GetComponent<Animator>();
         pInput = GetComponent<PlayerInput>();
         rig = GetComponent<Rigidbody>();
+
+        attackLayerIndex = anim.GetLayerIndex("Attack");
 	}
 	
 
@@ -48,6 +53,9 @@ public class ActorController : MonoBehaviour {
 
         if (pInput.jump)
             anim.SetTrigger("jump");
+
+        if (pInput.attack)
+            anim.SetTrigger("attack");
 
         if(pInput.Dirmag > 0.1f)
         {
@@ -121,6 +129,23 @@ public class ActorController : MonoBehaviour {
         //如果直接这样后跳，会一瞬间完成后跳的距离
         //thrustVec = model.transform.forward * (-jabVelocity);
         thrustVec = model.transform.forward * anim.GetFloat("jabVelocity");
+    }
+
+    public void OnAttack1hAUpdate()
+    {
+        thrustVec = model.transform.forward * anim.GetFloat("attack1hAVelocity");
+    }
+
+    public void OnAttack1hAEnter()
+    {
+        pInput.interactive = false;
+        anim.SetLayerWeight(attackLayerIndex, 1.0f);
+    }
+
+    public void OnAttackLayerIdleEnter()
+    {
+        pInput.interactive = true;
+        anim.SetLayerWeight(attackLayerIndex, 0.0f);
     }
 
 //class end

@@ -10,11 +10,11 @@ public class CameraController : MonoBehaviour {
     public float cameraDampValue = 0.07f;//相机追赶的Damp时间值
 
     private float tmpEulerX;//相机的X轴的欧拉度数
-    private float tmpEulerY;//相机的Y轴的欧拉度数
+    //private float tmpEulerY;//相机的Y轴的欧拉度数
     private GameObject playerHandle;
     private GameObject cameraHandle;
     private GameObject model;
-    private GameObject camera;
+    private GameObject _camera;
 
     private Vector3 cameraDampVelocity;
 
@@ -22,9 +22,9 @@ public class CameraController : MonoBehaviour {
         cameraHandle = transform.parent.gameObject;
         playerHandle = cameraHandle.transform.parent.gameObject;
         tmpEulerX = 20.0f;
-        tmpEulerY = 0.0f;
+        //tmpEulerY = 0.0f;
         model = playerHandle.GetComponent<ActorController>().model;
-        camera = Camera.main.gameObject;
+        _camera = Camera.main.gameObject;
 	}
 	
     //由于模型的移动大部分使用的是物理引擎，所以相机的跟随也在物理引擎中做
@@ -44,7 +44,7 @@ public class CameraController : MonoBehaviour {
         //                                                                                 transform.position,
         //                                                                                 ref cameraDampVelocity,
         //                                                                                 cameraDampValue);
-        camera.transform.position = transform.position;
-        camera.transform.eulerAngles = transform.eulerAngles;
+        _camera.transform.position = transform.position;
+        _camera.transform.eulerAngles = transform.eulerAngles;
 	}
 }
