@@ -22,14 +22,24 @@ public class PlayerInput : MonoBehaviour
     public string keyLeft = "a";
     public string keyRight = "d";
 
+    //键盘的方向键
+    public string upArrow = "up";
+    public string downArrow = "down";
+    public string leftArrow = "left";
+    public string rightArrow = "right";
+
      public string keyA;
      public string keyB;
      public string keyC;
      public string keyD;
 
+
     [Header("===== Output Signal =====")]
-    public float dirForward;//前后方向的移动量，随键盘按键时间的长短从0增加到1
-    public float dirRight;//左右方向的移动量，随键盘按键时间的长短从0增加到1
+    public float dUp;//前后方向的移动量，随键盘按键时间的长短从0增加到1
+    public float dRight;//左右方向的移动量，随键盘按键时间的长短从0增加到1
+
+    public float jUp;//前后箭头按键的点按量
+    public float jRight;//左右箭头的点按量
 
     public float Dirmag;//两个方向键同时按下时的斜向行走量，注意根号2的问题
     public Vector3 planarVec;//行走方向向量
@@ -57,6 +67,10 @@ public class PlayerInput : MonoBehaviour
 	
 	void Update () {
 
+        //按键盘箭头按钮的输入量
+        jUp = (Input.GetKey(upArrow) ? 1.0f : 0.0f) - (Input.GetKey(downArrow) ? 1.0f : 0.0f);
+        jRight = (Input.GetKey(rightArrow) ? 1.0f : 0.0f) - (Input.GetKey(leftArrow) ? 1.0f : 0.0f);        
+
         targetDirForward = (Input.GetKey(keyForward) ? 1.0f : 0.0f) - (Input.GetKey(keyBack) ? 1.0f : 0.0f);
         targetDirRight = (Input.GetKey(keyRight) ? 1.0f : 0.0f) - (Input.GetKey(keyLeft) ? 1.0f : 0.0f);
 
@@ -67,11 +81,11 @@ public class PlayerInput : MonoBehaviour
         }
 
         //按方向键的输入量
-        dirForward = Mathf.SmoothDamp(dirForward, targetDirForward, ref velocityForward, 0.1f);
-        dirRight = Mathf.SmoothDamp(dirRight, targetDirRight, ref velocityRight, 0.1f);
+        dUp = Mathf.SmoothDamp(dUp, targetDirForward, ref velocityForward, 0.1f);
+        dRight = Mathf.SmoothDamp(dRight, targetDirRight, ref velocityRight, 0.1f);
 
         //方形数据转圆形，解决斜方向根号2的问题
-        Vector2 tempDirAxis = RectToCircle(new Vector2(dirRight, dirForward));
+        Vector2 tempDirAxis = RectToCircle(new Vector2(dRight, dUp));
         float _dirForward = tempDirAxis.y;
         float _dirRight = tempDirAxis.x;
 
