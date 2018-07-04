@@ -2,6 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// class name : CameraController
+/// description : 相机控制
+/// time : 2018.7.3
+/// @author : 杨浩然
+/// </summary>
 public class CameraController : MonoBehaviour {
 
     public PlayerInput pInput;

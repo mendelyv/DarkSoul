@@ -37,6 +37,9 @@ public class ActorController : MonoBehaviour {
     //冲量的方向向量
     private Vector3 thrustVec;
     private CapsuleCollider capsuleCollider;
+
+    //用于控制由Base层到Attack层的lerp的目标值
+    private float lerpTarget;
     //移动锁定
     public bool lockPlanar = false;
 
@@ -167,18 +170,26 @@ public class ActorController : MonoBehaviour {
     public void OnAttack1hAUpdate()
     {
         thrustVec = model.transform.forward * anim.GetFloat("attack1hAVelocity");
+        //使用差值法使动画图层的权重缓慢增加
+        anim.SetLayerWeight(attackLayerIndex, Mathf.Lerp(anim.GetLayerWeight(attackLayerIndex), lerpTarget, 0.4f));
     }
 
     public void OnAttack1hAEnter()
     {
         pInput.interactive = false;
-        anim.SetLayerWeight(attackLayerIndex, 1.0f);
+        lerpTarget = 1.0f;
     }
 
     public void OnAttackLayerIdleEnter()
     {
         pInput.interactive = true;
-        anim.SetLayerWeight(attackLayerIndex, 0.0f);
+        lerpTarget = 0.0f;
+    }
+
+    public void OnAttackLayerIdleUpdate()
+    {
+        //使用差值法使动画图层的权重缓慢增加
+        anim.SetLayerWeight(attackLayerIndex, Mathf.Lerp(anim.GetLayerWeight(attackLayerIndex), lerpTarget, 0.4f));
     }
 
 //class end
