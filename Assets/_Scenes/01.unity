@@ -292,6 +292,8 @@ MonoBehaviour:
   jumpVelocity: 3.5
   rollVelocity: 3
   jabVelocity: 1
+  friction_ZERO: {fileID: 13400000, guid: c25cd7aef058ac4438831f5fd6332573, type: 2}
+  friction_ONE: {fileID: 13400000, guid: 44b3a1f8b3c313f429d2eb8179da4d7a, type: 2}
   anim: {fileID: 0}
   lockPlanar: 0
 --- !u!136 &321607462

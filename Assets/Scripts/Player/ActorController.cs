@@ -23,15 +23,23 @@ public class ActorController : MonoBehaviour {
     //后跳冲量
     public float jabVelocity = 2.0f;
 
+    [Space(10)]
+    [Header("===== Friction Setting =====")]
+    public PhysicMaterial friction_ZERO;
+    public PhysicMaterial friction_ONE;
+
     [SerializeField]
     private Animator anim;
     private Rigidbody rig;
+    private bool canAttack;
 
     private Vector3 movingVec;
     //冲量的方向向量
     private Vector3 thrustVec;
+    private CapsuleCollider capsuleCollider;
     //移动锁定
     public bool lockPlanar = false;
+
 
     //状态机动画图层index
     private int attackLayerIndex;
@@ -40,6 +48,7 @@ public class ActorController : MonoBehaviour {
         anim = model.GetComponent<Animator>();
         pInput = GetComponent<PlayerInput>();
         rig = GetComponent<Rigidbody>();
+        capsuleCollider = GetComponent<CapsuleCollider>();
 
         attackLayerIndex = anim.GetLayerIndex("Attack");
 	}
@@ -52,9 +61,12 @@ public class ActorController : MonoBehaviour {
             anim.SetTrigger("roll");
 
         if (pInput.jump)
+        {
             anim.SetTrigger("jump");
-
-        if (pInput.attack)
+            canAttack = false;
+        }
+            
+        if (pInput.attack && CheckStatu("Ground") && canAttack)
             anim.SetTrigger("attack");
 
         if(pInput.Dirmag > 0.1f)
@@ -63,7 +75,6 @@ public class ActorController : MonoBehaviour {
         }
         if(!lockPlanar)
             movingVec = pInput.Dirmag * model.transform.forward * walkSpeed * ((pInput.run)?runMultiplier:1.0f);
-
 	}
 
     void FixedUpdate()
@@ -74,6 +85,19 @@ public class ActorController : MonoBehaviour {
         thrustVec = Vector3.zero;
     }
 
+    /// <summary>
+    /// 检查是否是这个状态
+    /// </summary>
+    /// <param name="stateName">动画状态名字</param>
+    /// <param name="layerName">动画图层名字</param>
+    /// <returns></returns>
+    public bool CheckStatu(string stateName,string layerName = "Base Layer")
+    {
+        int layerIndex = anim.GetLayerIndex(layerName);
+        bool result = anim.GetCurrentAnimatorStateInfo(layerIndex).IsName(stateName);
+        return result;
+    }
+
     //由动画状态机上的FSMOnEnter类调用
     public void OnJumpEnter()
     {
@@ -81,6 +105,8 @@ public class ActorController : MonoBehaviour {
         lockPlanar = true;
         thrustVec = new Vector3(0, jumpVelocity, 0);
     }
+
+
 
    
     //由传感器发送的信息调用
@@ -101,6 +127,13 @@ public class ActorController : MonoBehaviour {
     {
         pInput.interactive = true;
         lockPlanar = false;
+        canAttack = true;
+        capsuleCollider.material = friction_ONE;
+    }
+
+    public void OnGroundExit()
+    {
+        capsuleCollider.material = friction_ZERO;
     }
 
     //由动画状态机上的FSMOnEnter类调用
