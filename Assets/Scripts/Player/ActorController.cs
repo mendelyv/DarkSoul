@@ -40,6 +40,8 @@ public class ActorController : MonoBehaviour {
 
     //用于控制由Base层到Attack层的lerp的目标值
     private float lerpTarget;
+    //用于attack1hC动画的 root motion 位移量
+    private Vector3 deltaPos;
     //移动锁定
     public bool lockPlanar = false;
 
@@ -82,8 +84,9 @@ public class ActorController : MonoBehaviour {
 
     void FixedUpdate()
     {
-        //rig.position += movingVec * Time.fixedDeltaTime;
-        //rig.velocity = movingVec;//并未算入地心引力
+        //加入attack1hC的root motion位移量
+        rig.position += deltaPos;
+        deltaPos = Vector3.zero;
         rig.velocity = new Vector3(movingVec.x, rig.velocity.y, movingVec.z) + thrustVec;
         thrustVec = Vector3.zero;
     }
@@ -190,6 +193,15 @@ public class ActorController : MonoBehaviour {
     {
         //使用差值法使动画图层的权重缓慢增加
         anim.SetLayerWeight(attackLayerIndex, Mathf.Lerp(anim.GetLayerWeight(attackLayerIndex), lerpTarget, 0.4f));
+    }
+
+    public void OnRootMotionUpdate(object _deltaPos)
+    {
+        if (CheckStatu("Attack1hC", "Attack"))
+        {
+            //这里注意变量的装箱拆箱操作
+            deltaPos += (Vector3)_deltaPos;
+        }
     }
 
 //class end
