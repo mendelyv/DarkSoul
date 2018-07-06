@@ -51,14 +51,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\FSMOnUpdate.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMClearSignals.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMOnEnter.cs" />
      <Compile Include="Assets\Scripts\FSM\FSMOnExit.cs" />
+     <Compile Include="Assets\Scripts\FSM\FSMOnUpdate.cs" />
      <Compile Include="Assets\Scripts\Player\ActorController.cs" />
      <Compile Include="Assets\Scripts\Player\OnGroundSensor.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />
+     <Compile Include="Assets\Scripts\Player\RootMotionControl.cs" />
      <Compile Include="Assets\Scripts\Player\TriggerControl.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
