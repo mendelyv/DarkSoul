@@ -11,7 +11,7 @@ using UnityEngine;
 /// </summary>
 public class CameraController : MonoBehaviour {
 
-    private KeyboardInput pInput;
+    private IUserInput pInput;
     public float horizontalSpeed = 100.0f;
     public float verticalSpeed = 80.0f;
     public float cameraDampValue = 0.07f;//相机追赶的Damp时间值
