@@ -1,7 +1,7 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkSoul", "Assembly-CSharp.csproj", "{BA9D6FFA-8A73-C66B-E7D6-5384C42265A8}"
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkSoul", "DarkSoul.csproj", "{252E5FD5-609A-E9FE-8AFC-768497992510}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,15 +9,12 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BA9D6FFA-8A73-C66B-E7D6-5384C42265A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BA9D6FFA-8A73-C66B-E7D6-5384C42265A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BA9D6FFA-8A73-C66B-E7D6-5384C42265A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BA9D6FFA-8A73-C66B-E7D6-5384C42265A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{252E5FD5-609A-E9FE-8AFC-768497992510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{252E5FD5-609A-E9FE-8AFC-768497992510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{252E5FD5-609A-E9FE-8AFC-768497992510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{252E5FD5-609A-E9FE-8AFC-768497992510}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = Assembly-CSharp.csproj
 	EndGlobalSection
 EndGlobal

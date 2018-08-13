@@ -2,35 +2,23 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 /// <summary>
-/// class name : PlayerInput
+/// class name : KeyboardInput
 /// description : 玩家输入控制器
-/// time : 2018.7.2
+/// time : 2018.8.13
 /// @author : 杨浩然
 /// </summary>
-public class PlayerInput : MonoBehaviour
-{
+public class KeyboardInput : MonoBehaviour {
 
-    #region====变量区
 
-    [Header("===== Key Setting =====")]
-    public string keyForward = "w";
-    public string keyBack = "s";
-    public string keyLeft = "a";
-    public string keyRight = "d";
-
-    //键盘的方向键
-    public string upArrow = "up";
-    public string downArrow = "down";
-    public string leftArrow = "left";
-    public string rightArrow = "right";
-
-    public string keyA;
-    public string keyB;
-    public string keyC;
-    public string keyD;
-
+    [Header("===== Keyboard Settings =====")]
+    public string axisX = "Horizontal";
+    public string axisY = "Vertical";
+    public string mouseX = "Mouse X";
+    public string mouseY = "Mouse Y";
+    public string keyJump = "space";
+    public string keyRun = "left shift";
+    public string keyAttack = "k";
 
     [Header("===== Output Signal =====")]
     public float dUp;//前后方向的移动量，随键盘按键时间的长短从0增加到1
@@ -60,19 +48,18 @@ public class PlayerInput : MonoBehaviour
     private float velocityForward;
     private float velocityRight;
 
-    #endregion
-
-
+	
+	// Update is called once per frame
 	void Update () {
 
         //转动摄像机的输入量
-        jUp = (Input.GetKey(upArrow) ? 1.0f : 0.0f) - (Input.GetKey(downArrow) ? 1.0f : 0.0f);
-        jRight = (Input.GetKey(rightArrow) ? 1.0f : 0.0f) - (Input.GetKey(leftArrow) ? 1.0f : 0.0f);        
+        jUp = Input.GetAxis(mouseY);
+        jRight = Input.GetAxis(mouseX);
 
-        targetDirForward = (Input.GetKey(keyForward) ? 1.0f : 0.0f) - (Input.GetKey(keyBack) ? 1.0f : 0.0f);
-        targetDirRight = (Input.GetKey(keyRight) ? 1.0f : 0.0f) - (Input.GetKey(keyLeft) ? 1.0f : 0.0f);
+        targetDirForward = Input.GetAxis(axisY);
+        targetDirRight = Input.GetAxis(axisX);
 
-        if( ! interactive)//使用软开关控制该模块是否可以使用，直接将组件勾选掉缺陷就是当重新开启时组件中的数据会有可能混乱
+        if (!interactive)//使用软开关控制该模块是否可以使用，直接将组件勾选掉缺陷就是当重新开启时组件中的数据会有可能混乱
         {
             targetDirForward = 0.0f;
             targetDirRight = 0.0f;
@@ -89,14 +76,14 @@ public class PlayerInput : MonoBehaviour
 
         //计算多方向键入的位移量
         Dirmag = Mathf.Sqrt((_dirForward * _dirForward) + (_dirRight * _dirRight));
-        
+
         //计算多方向键入的方向向量，比如 w a 一起按为左前方
         planarVec = _dirRight * transform.right + _dirForward * transform.forward;
 
-        run = Input.GetKey(keyA);
+        run = Input.GetKey(keyRun);
 
-        bool tempJump = Input.GetKey(keyB);
-        if(tempJump != lastJump && tempJump)
+        bool tempJump = Input.GetKey(keyJump);
+        if (tempJump != lastJump && tempJump)
         {
             jump = true;
         }
@@ -106,7 +93,8 @@ public class PlayerInput : MonoBehaviour
         }
         lastJump = tempJump;
 
-        bool tempAttack= Input.GetKey(keyC);
+        bool tempAttack = Input.GetKey(keyAttack);
+        //bool tempAttack = Input.GetMouseButtonDown(0);
         if (tempJump != lastAttack && tempAttack)
         {
             attack = true;
@@ -117,8 +105,7 @@ public class PlayerInput : MonoBehaviour
         }
         lastAttack = tempAttack;
 
-	}
-
+    }
 
 
     private Vector2 RectToCircle(Vector2 input)
@@ -131,5 +118,6 @@ public class PlayerInput : MonoBehaviour
         return output;
     }
 
-    
+
+//class end
 }

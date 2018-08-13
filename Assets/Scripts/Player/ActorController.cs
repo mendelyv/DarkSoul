@@ -13,7 +13,7 @@ public class ActorController : MonoBehaviour {
 
     //模型
     public GameObject model;
-    public PlayerInput pInput;
+    public KeyboardInput pInput;
     public float walkSpeed = 2.0f;
     public float runMultiplier = 2.0f;
     //跳跃冲量
@@ -51,7 +51,7 @@ public class ActorController : MonoBehaviour {
 
 	void Awake () {
         anim = model.GetComponent<Animator>();
-        pInput = GetComponent<PlayerInput>();
+        pInput = GetComponent<KeyboardInput>();
         rig = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
 

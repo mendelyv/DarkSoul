@@ -11,7 +11,7 @@ using UnityEngine;
 /// </summary>
 public class CameraController : MonoBehaviour {
 
-    public PlayerInput pInput;
+    private KeyboardInput pInput;
     public float horizontalSpeed = 100.0f;
     public float verticalSpeed = 80.0f;
     public float cameraDampValue = 0.07f;//相机追赶的Damp时间值
@@ -29,8 +29,9 @@ public class CameraController : MonoBehaviour {
         cameraHandle = transform.parent.gameObject;
         playerHandle = cameraHandle.transform.parent.gameObject;
         tmpEulerX = 20.0f;
-        //tmpEulerY = 0.0f;
-        model = playerHandle.GetComponent<ActorController>().model;
+        ActorController ac = playerHandle.GetComponent<ActorController>();
+        model = ac.model;
+        pInput = ac.pInput;
         _camera = Camera.main.gameObject;
 	}
 	
