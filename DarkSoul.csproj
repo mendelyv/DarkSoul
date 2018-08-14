@@ -289,6 +289,7 @@
     <Compile Include="Assets\Scripts\FSM\FSMOnExit.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMOnUpdate.cs" />
     <Compile Include="Assets\Scripts\Player\ActorController.cs" />
+    <Compile Include="Assets\Scripts\Player\IUserInput.cs" />
     <Compile Include="Assets\Scripts\Player\KeyboardInput.cs" />
     <Compile Include="Assets\Scripts\Player\OnGroundSensor.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInput.cs" />

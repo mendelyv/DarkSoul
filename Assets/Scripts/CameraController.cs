@@ -42,17 +42,17 @@ public class CameraController : MonoBehaviour {
         playerHandle.transform.Rotate(Vector3.up, pInput.jRight * horizontalSpeed * Time.fixedDeltaTime);
         //使用减等于翻转方向
         tmpEulerX -= pInput.jUp * verticalSpeed * Time.fixedDeltaTime;
-        //tmpEulerY += pInput.jRight * horizontalSpeed * Time.deltaTime;
         tmpEulerX = Mathf.Clamp(tmpEulerX, -40.0f, 40.0f);
         cameraHandle.transform.localEulerAngles = new Vector3(tmpEulerX, 0, 0);
 
         model.transform.eulerAngles = tmpModelEuler;
 
-        //camera.transform.position = Vector3.SmoothDamp(camera.transform.position,
-        //                                                                                 transform.position,
-        //                                                                                 ref cameraDampVelocity,
-        //                                                                                 cameraDampValue);
-        _camera.transform.position = transform.position;
-        _camera.transform.eulerAngles = transform.eulerAngles;
-	}
+        _camera.transform.position = Vector3.SmoothDamp(_camera.transform.position,
+                                                        transform.position,
+                                                        ref cameraDampVelocity,
+                                                        cameraDampValue);
+        //_camera.transform.position = transform.position;
+        //_camera.transform.eulerAngles = transform.eulerAngles;
+        _camera.transform.LookAt(cameraHandle.transform);
+    }
 }

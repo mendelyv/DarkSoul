@@ -203,12 +203,16 @@ public class ActorController : MonoBehaviour {
         anim.SetLayerWeight(attackLayerIndex, Mathf.Lerp(anim.GetLayerWeight(attackLayerIndex), lerpTarget, 0.4f));
     }
 
+    /// <summary>
+    /// 拿出动画的root motion位移量
+    /// </summary>
+    /// <param name="_deltaPos"></param>
     public void OnRootMotionUpdate(object _deltaPos)
     {
         if (CheckStatu("Attack1hC", "Attack"))
         {
             //这里注意变量的装箱拆箱操作
-            deltaPos += (Vector3)_deltaPos;
+            deltaPos += (deltaPos + (Vector3)_deltaPos) / 2.0f;//做位移量模糊处理
         }
     }
 
