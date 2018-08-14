@@ -230,7 +230,6 @@ GameObject:
   - component: {fileID: 321607464}
   - component: {fileID: 321607462}
   - component: {fileID: 321607460}
-  - component: {fileID: 321607465}
   - component: {fileID: 321607461}
   - component: {fileID: 321607463}
   m_Layer: 0
@@ -246,7 +245,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 321607459}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c65ea22bb7691345b9c7ef42f5a27cc, type: 3}
   m_Name: 
@@ -258,6 +257,7 @@ MonoBehaviour:
   Dirmag: 0
   planarVec: {x: 0, y: 0, z: 0}
   run: 0
+  defense: 0
   jump: 0
   lastJump: 0
   attack: 0
@@ -273,8 +273,10 @@ MonoBehaviour:
   rightArrow: right
   keyA: left shift
   keyB: space
-  keyC: k
-  keyD: 
+  keyC: mouse 0
+  keyD: mouse 1
+  mouseEnable: 0
+  mouseSensitivity: 1
 --- !u!114 &321607461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -341,36 +343,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &321607465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 321607459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2495608b92f1654ea35f82ec8c012da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dUp: 0
-  dRight: 0
-  jUp: 0
-  jRight: 0
-  Dirmag: 0
-  planarVec: {x: 0, y: 0, z: 0}
-  run: 0
-  jump: 0
-  lastJump: 0
-  attack: 0
-  lastAttack: 0
-  interactive: 1
-  axisX: Horizontal
-  axisY: Vertical
-  mouseX: Mouse X
-  mouseY: Mouse Y
-  keyJump: space
-  keyRun: left shift
-  keyAttack: k
 --- !u!1 &332343073
 GameObject:
   m_ObjectHideFlags: 0

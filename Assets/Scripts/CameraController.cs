@@ -33,6 +33,7 @@ public class CameraController : MonoBehaviour {
         model = ac.model;
         pInput = ac.pInput;
         _camera = Camera.main.gameObject;
+        Cursor.lockState = CursorLockMode.Locked;//设置鼠标隐藏
 	}
 	
     //由于模型的移动大部分使用的是物理引擎，所以相机的跟随也在物理引擎中做
