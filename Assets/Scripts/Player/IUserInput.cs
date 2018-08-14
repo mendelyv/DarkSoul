@@ -22,6 +22,7 @@ public abstract class IUserInput : MonoBehaviour {
 
     // press signal
     public bool run = false;
+    public bool defense;
 
     // trigger once signal
     public bool jump = false;

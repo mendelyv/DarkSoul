@@ -19,8 +19,7 @@ public class KeyboardInput : IUserInput {
     public string keyJump = "space";
     public string keyRun = "left shift";
     public string keyAttack = "k";
-
-
+    public string keyDefense = "e";
 	
 	// Update is called once per frame
 	void Update () {
@@ -54,6 +53,8 @@ public class KeyboardInput : IUserInput {
         planarVec = _dirRight * transform.right + _dirForward * transform.forward;
 
         run = Input.GetKey(keyRun);
+
+        defense = Input.GetKey(keyDefense);
 
         bool tempJump = Input.GetKey(keyJump);
         if (tempJump != lastJump && tempJump)

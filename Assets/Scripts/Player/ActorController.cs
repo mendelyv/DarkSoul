@@ -69,6 +69,7 @@ public class ActorController : MonoBehaviour {
 
 	void Update () {
         anim.SetFloat("forward", pInput.Dirmag * Mathf.Lerp(anim.GetFloat("forward"), ((pInput.run) ? 2.0f : 1.0f),0.3f));
+        anim.SetBool("defense", pInput.defense);
         //如果角色的下落量较大，就播放前滚翻
         if (rig.velocity.magnitude > 5.0f)
             anim.SetTrigger("roll");
