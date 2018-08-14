@@ -16,7 +16,7 @@ public class MyButton {
         curState = input;
         IsPressing = curState;
 
-        OnReleased = false;
+        OnPressed = false;
         OnReleased = false;
         if(curState != lastState)
         {
