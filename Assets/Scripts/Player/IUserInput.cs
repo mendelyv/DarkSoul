@@ -29,6 +29,7 @@ public abstract class IUserInput : MonoBehaviour {
     public bool lastJump = false;
     public bool attack = false;
     public bool lastAttack = false;
+    public bool roll = false;
 
     // double trigger
 

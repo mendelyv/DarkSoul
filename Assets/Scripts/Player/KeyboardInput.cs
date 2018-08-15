@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 /// <summary>
 /// class name : PlayerInput
 /// description : 玩家输入控制器
@@ -11,7 +10,6 @@ using UnityEngine;
 /// </summary>
 public class KeyboardInput : IUserInput
 {
-
     #region====变量区
 
     [Header("===== Key Setting =====")]
@@ -30,11 +28,13 @@ public class KeyboardInput : IUserInput
     public string keyB = "space";
     public string keyC = "mouse 0";
     public string keyD = "mouse 1";
+    public string keyE = "p";
 
     public MyButton buttonA = new MyButton();
     public MyButton buttonB = new MyButton();
     public MyButton buttonC = new MyButton();
     public MyButton buttonD = new MyButton();
+    public MyButton buttonE = new MyButton();
 
 
     [Header("===== Mouse Setting =====")]
@@ -50,6 +50,9 @@ public class KeyboardInput : IUserInput
         buttonB.Tick(Input.GetKey(keyB));
         buttonC.Tick(Input.GetKey(keyC));
         buttonD.Tick(Input.GetKey(keyD));
+        buttonE.Tick(Input.GetKey(keyE));
+
+        print(buttonE.IsExtending && buttonE.OnPressed);
 
         //转动摄像机的输入量
         if (mouseEnable)
@@ -62,8 +65,6 @@ public class KeyboardInput : IUserInput
             jUp = (Input.GetKey(upArrow) ? 1.0f : 0.0f) - (Input.GetKey(downArrow) ? 1.0f : 0.0f);
             jRight = (Input.GetKey(rightArrow) ? 1.0f : 0.0f) - (Input.GetKey(leftArrow) ? 1.0f : 0.0f);
         }
-
-       
 
         targetDirForward = (Input.GetKey(keyForward) ? 1.0f : 0.0f) - (Input.GetKey(keyBack) ? 1.0f : 0.0f);
         targetDirRight = (Input.GetKey(keyRight) ? 1.0f : 0.0f) - (Input.GetKey(keyLeft) ? 1.0f : 0.0f);
@@ -88,34 +89,11 @@ public class KeyboardInput : IUserInput
         
         //计算多方向键入的方向向量，比如 w a 一起按为左前方
         planarVec = _dirRight * transform.right + _dirForward * transform.forward;
-
-        //run = Input.GetKey(keyA);
-        run = buttonA.IsPressing;
-        //defense = Input.GetKey(keyD);
+        roll = buttonA.OnReleased && buttonA.IsDelaying;//如果按下去很快松开就翻滚
+        //奔跑键按下会有延迟开始跑动，并且松开时还会有跑动的延迟，方便连击
+        run = (buttonA.IsPressing && !buttonA.IsDelaying) || buttonA.IsExtending;
         defense = buttonD.IsPressing;
-
-        //bool tempJump = Input.GetKey(keyB);
-        //if(tempJump != lastJump && tempJump)
-        //{
-        //    jump = true;
-        //}
-        //else
-        //{
-        //    jump = false;
-        //}
-        //lastJump = tempJump;
-        jump = buttonB.OnPressed;
-
-        //bool tempAttack= Input.GetKey(keyC);
-        //if (tempJump != lastAttack && tempAttack)
-        //{
-        //    attack = true;
-        //}
-        //else
-        //{
-        //    attack = false;
-        //}
-        //lastAttack = tempAttack;
+        jump = buttonA.OnPressed && buttonA.IsExtending;
         attack = buttonC.OnPressed;
 
 	}
