@@ -29,13 +29,14 @@ public class KeyboardInput : IUserInput
     public string keyC = "mouse 0";
     public string keyD = "mouse 1";
     public string keyE = "p";
+    public string keyF = "f";
 
     public MyButton buttonA = new MyButton();
     public MyButton buttonB = new MyButton();
     public MyButton buttonC = new MyButton();
     public MyButton buttonD = new MyButton();
     public MyButton buttonE = new MyButton();
-
+    public MyButton buttonF = new MyButton();
 
     [Header("===== Mouse Setting =====")]
     public bool mouseEnable = true;
@@ -51,6 +52,7 @@ public class KeyboardInput : IUserInput
         buttonC.Tick(Input.GetKey(keyC));
         buttonD.Tick(Input.GetKey(keyD));
         buttonE.Tick(Input.GetKey(keyE));
+        buttonF.Tick(Input.GetKey(keyF));
 
         print(buttonE.IsExtending && buttonE.OnPressed);
 
@@ -95,6 +97,7 @@ public class KeyboardInput : IUserInput
         defense = buttonD.IsPressing;
         jump = buttonA.OnPressed && buttonA.IsExtending;
         attack = buttonC.OnPressed;
+        lockon = buttonF.OnPressed;
 
 	}
     

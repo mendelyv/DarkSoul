@@ -13,6 +13,7 @@ public class ActorController : MonoBehaviour {
 
     //模型
     public GameObject model;
+    public CameraController cameraController;
     public IUserInput pInput;
     public float walkSpeed = 2.0f;
     public float runMultiplier = 2.0f;
@@ -75,6 +76,11 @@ public class ActorController : MonoBehaviour {
         {
             anim.SetTrigger("roll");
             canAttack = false;
+        }
+
+        if(pInput.lockon)
+        {
+            cameraController.LockUnlock();
         }
 
         if (pInput.jump)

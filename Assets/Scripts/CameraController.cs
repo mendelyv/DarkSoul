@@ -56,4 +56,11 @@ public class CameraController : MonoBehaviour {
         //_camera.transform.eulerAngles = transform.eulerAngles;
         _camera.transform.LookAt(cameraHandle.transform);
     }
+
+    public void LockUnlock()
+    {
+        Debug.Log("LockUnlock");
+    }
+
+
 }

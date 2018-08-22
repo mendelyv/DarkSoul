@@ -30,6 +30,7 @@ public abstract class IUserInput : MonoBehaviour {
     public bool attack = false;
     public bool lastAttack = false;
     public bool roll = false;
+    public bool lockon = false;
 
     // double trigger
 
