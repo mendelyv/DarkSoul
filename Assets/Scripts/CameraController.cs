@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
 /// <summary>
@@ -15,6 +16,8 @@ public class CameraController : MonoBehaviour {
     public float horizontalSpeed = 100.0f;
     public float verticalSpeed = 80.0f;
     public float cameraDampValue = 0.07f;//相机追赶的Damp时间值
+    public Image lockDot;//锁定的提示点
+    public bool isLock;
 
     private float tmpEulerX;//相机的X轴的欧拉度数
     //private float tmpEulerY;//相机的Y轴的欧拉度数
@@ -22,6 +25,7 @@ public class CameraController : MonoBehaviour {
     private GameObject cameraHandle;
     private GameObject model;
     private GameObject _camera;
+    private GameObject lockTarget;
 
     private Vector3 cameraDampVelocity;
 
@@ -33,20 +37,33 @@ public class CameraController : MonoBehaviour {
         model = ac.model;
         pInput = ac.pInput;
         _camera = Camera.main.gameObject;
-        Cursor.lockState = CursorLockMode.Locked;//设置鼠标隐藏
+        //Cursor.lockState = CursorLockMode.Locked;//设置鼠标隐藏
+        lockDot.enabled = false;
+        isLock = false;
 	}
 	
     //由于模型的移动大部分使用的是物理引擎，所以相机的跟随也在物理引擎中做
 	void FixedUpdate () {
-        Vector3 tmpModelEuler = model.transform.eulerAngles;//用于防止模型旋转的中间值
 
-        playerHandle.transform.Rotate(Vector3.up, pInput.jRight * horizontalSpeed * Time.fixedDeltaTime);
-        //使用减等于翻转方向
-        tmpEulerX -= pInput.jUp * verticalSpeed * Time.fixedDeltaTime;
-        tmpEulerX = Mathf.Clamp(tmpEulerX, -40.0f, 40.0f);
-        cameraHandle.transform.localEulerAngles = new Vector3(tmpEulerX, 0, 0);
+        if(lockTarget == null)
+        {
+            Vector3 tmpModelEuler = model.transform.eulerAngles;//用于防止模型旋转的中间值
 
-        model.transform.eulerAngles = tmpModelEuler;
+            playerHandle.transform.Rotate(Vector3.up, pInput.jRight * horizontalSpeed * Time.fixedDeltaTime);
+            //使用减等于翻转方向
+            tmpEulerX -= pInput.jUp * verticalSpeed * Time.fixedDeltaTime;
+            tmpEulerX = Mathf.Clamp(tmpEulerX, -40.0f, 40.0f);
+            cameraHandle.transform.localEulerAngles = new Vector3(tmpEulerX, 0, 0);
+
+            model.transform.eulerAngles = tmpModelEuler;
+
+        }
+        else
+        {
+            Vector3 tempForward = lockTarget.transform.position - model.transform.position;
+            tempForward.y = 0;
+            playerHandle.transform.forward = tempForward;
+        }
 
         _camera.transform.position = Vector3.SmoothDamp(_camera.transform.position,
                                                         transform.position,
@@ -57,9 +74,42 @@ public class CameraController : MonoBehaviour {
         _camera.transform.LookAt(cameraHandle.transform);
     }
 
+
+
     public void LockUnlock()
     {
-        Debug.Log("LockUnlock");
+        Vector3 modelOrigin1 = model.transform.position;
+        Vector3 modelOrigin2 = modelOrigin1 + new Vector3(0, 1, 0);
+        Vector3 boxCenter = modelOrigin2 + model.transform.forward * 5.0f;
+        Collider[] cols = Physics.OverlapBox(boxCenter, new Vector3(0.5f, 0.5f, 5.0f), model.transform.rotation, LayerMask.GetMask("Enemy"));
+        
+        if(cols.Length == 0)
+        {
+            lockTarget = null;
+            lockDot.enabled = false;
+            isLock = false;
+        }
+        else
+        {
+            foreach (var item in cols)
+            {
+                if(lockTarget == item.gameObject)
+                {
+                    lockTarget = null;
+                    lockDot.enabled = false;
+                    isLock = false;
+                    break;
+                }
+                lockTarget = item.gameObject;
+                lockDot.enabled = true;
+                isLock = true;
+                break;
+            }
+        }
+        
+
+
+
     }
 
 

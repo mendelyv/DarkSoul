@@ -92,12 +92,25 @@ public class ActorController : MonoBehaviour {
         if (pInput.attack && CheckStatu("Ground") && canAttack)
             anim.SetTrigger("attack");
 
-        if(pInput.Dirmag > 0.1f)
+        if(!cameraController.isLock)
         {
-            model.transform.forward = Vector3.Slerp(model.transform.forward, pInput.planarVec, 0.25f); ;
+            if(pInput.Dirmag > 0.1f)
+            {
+                model.transform.forward = Vector3.Slerp(model.transform.forward, pInput.planarVec, 0.25f); ;
+            }
+            if(!lockPlanar)
+                movingVec = pInput.Dirmag * model.transform.forward * walkSpeed * ((pInput.run)?runMultiplier:1.0f);
+
         }
-        if(!lockPlanar)
-            movingVec = pInput.Dirmag * model.transform.forward * walkSpeed * ((pInput.run)?runMultiplier:1.0f);
+        else
+        {
+            model.transform.forward = transform.forward;
+            if(!lockPlanar)
+            {
+                movingVec = pInput.planarVec * walkSpeed * ((pInput.run) ? runMultiplier : 1.0f);
+            }
+        }
+
 	}
 
     void FixedUpdate()

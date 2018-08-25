@@ -54,8 +54,6 @@ public class KeyboardInput : IUserInput
         buttonE.Tick(Input.GetKey(keyE));
         buttonF.Tick(Input.GetKey(keyF));
 
-        print(buttonE.IsExtending && buttonE.OnPressed);
-
         //转动摄像机的输入量
         if (mouseEnable)
         {
