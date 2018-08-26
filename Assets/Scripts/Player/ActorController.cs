@@ -45,7 +45,8 @@ public class ActorController : MonoBehaviour {
     private Vector3 deltaPos;
     //移动锁定
     public bool lockPlanar = false;
-
+    //追踪方向，用于摄像机锁定时的跳跃以及翻滚按照planarVec的方向
+    public bool trackDirection = false;
 
     //状态机动画图层index
     private int attackLayerIndex;
@@ -69,8 +70,7 @@ public class ActorController : MonoBehaviour {
 	
 
 	void Update () {
-        anim.SetFloat("forward", pInput.Dirmag * Mathf.Lerp(anim.GetFloat("forward"), ((pInput.run) ? 2.0f : 1.0f),0.3f));
-        anim.SetBool("defense", pInput.defense);
+
         //                如果角色的下落量较大，就播放前滚翻
         if(pInput.roll || rig.velocity.magnitude > 5.0f)
         {
@@ -82,6 +82,19 @@ public class ActorController : MonoBehaviour {
         {
             cameraController.LockUnlock();
         }
+
+        if(!cameraController.isLock)
+        {
+            anim.SetFloat("forward", pInput.Dirmag * Mathf.Lerp(anim.GetFloat("forward"), ((pInput.run) ? 2.0f : 1.0f), 0.3f));
+            anim.SetFloat("right", 0.0f);
+        }
+        else
+        {
+            Vector3 localVec = transform.InverseTransformVector(pInput.planarVec);
+            anim.SetFloat("forward",localVec.z * ((pInput.run) ? 2.0f : 1.0f));
+            anim.SetFloat("right", localVec.x * ((pInput.run) ? 2.0f : 1.0f));            
+        }
+        anim.SetBool("defense", pInput.defense);
 
         if (pInput.jump)
         {
@@ -104,7 +117,10 @@ public class ActorController : MonoBehaviour {
         }
         else
         {
-            model.transform.forward = transform.forward;
+            if (!trackDirection)
+                model.transform.forward = transform.forward;
+            else
+                model.transform.forward = movingVec.normalized;
             if(!lockPlanar)
             {
                 movingVec = pInput.planarVec * walkSpeed * ((pInput.run) ? runMultiplier : 1.0f);
@@ -141,6 +157,7 @@ public class ActorController : MonoBehaviour {
         pInput.interactive = false;
         lockPlanar = true;
         thrustVec = new Vector3(0, jumpVelocity, 0);
+        trackDirection = true;
     }
 
     //由传感器发送的信息调用
@@ -163,6 +180,7 @@ public class ActorController : MonoBehaviour {
         lockPlanar = false;
         canAttack = true;
         capsuleCollider.material = friction_ONE;
+        trackDirection = false;
     }
 
     public void OnGroundExit()
@@ -182,6 +200,7 @@ public class ActorController : MonoBehaviour {
         pInput.interactive = false;
         lockPlanar = true;
         thrustVec = new Vector3(0, rollVelocity, 0);
+        trackDirection = true;
     }
 
     public  void OnJabEnter()

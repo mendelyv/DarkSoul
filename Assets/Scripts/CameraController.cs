@@ -25,7 +25,7 @@ public class CameraController : MonoBehaviour {
     private GameObject cameraHandle;
     private GameObject model;
     private GameObject _camera;
-    private GameObject lockTarget;
+    private LockTarget lockTarget;
 
     private Vector3 cameraDampVelocity;
 
@@ -60,7 +60,7 @@ public class CameraController : MonoBehaviour {
         }
         else
         {
-            Vector3 tempForward = lockTarget.transform.position - model.transform.position;
+            Vector3 tempForward = lockTarget.obj.transform.position - model.transform.position;
             tempForward.y = 0;
             playerHandle.transform.forward = tempForward;
         }
@@ -93,23 +93,32 @@ public class CameraController : MonoBehaviour {
         {
             foreach (var item in cols)
             {
-                if(lockTarget == item.gameObject)
+                if(lockTarget != null && lockTarget.obj == item.gameObject)
                 {
                     lockTarget = null;
                     lockDot.enabled = false;
                     isLock = false;
                     break;
                 }
-                lockTarget = item.gameObject;
+                lockTarget = new LockTarget(item.gameObject,item.bounds.extents.y);
                 lockDot.enabled = true;
                 isLock = true;
                 break;
             }
         }
         
+    }
 
+    private class LockTarget
+    {
+        public GameObject obj;
+        public float halfHeight;
 
-
+        public LockTarget(GameObject obj,float halfHeight)
+        {
+            this.obj = obj;
+            this.halfHeight = halfHeight;
+        }
     }
 
 
