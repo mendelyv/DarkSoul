@@ -63,6 +63,7 @@ public class CameraController : MonoBehaviour {
             Vector3 tempForward = lockTarget.obj.transform.position - model.transform.position;
             tempForward.y = 0;
             playerHandle.transform.forward = tempForward;
+            cameraHandle.transform.LookAt(lockTarget.obj.transform);
         }
 
         _camera.transform.position = Vector3.SmoothDamp(_camera.transform.position,
@@ -74,6 +75,19 @@ public class CameraController : MonoBehaviour {
         _camera.transform.LookAt(cameraHandle.transform);
     }
 
+    private void Update()
+    {
+        if(lockTarget != null)
+        {
+            lockDot.rectTransform.position = Camera.main.WorldToScreenPoint(lockTarget.obj.transform.position + new Vector3(0, lockTarget.halfHeight, 0));
+            if(Vector3.Distance(model.transform.position,lockTarget.obj.transform.position) > 10.0f)
+            {
+                lockTarget = null;
+                isLock = false;
+                lockDot.enabled = false;
+            }
+        }
+    }
 
 
     public void LockUnlock()
