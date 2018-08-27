@@ -101,8 +101,8 @@ public class ActorController : MonoBehaviour {
             anim.SetTrigger("jump");
             canAttack = false;
         }
-            
-        if (pInput.attack && CheckStatu("Ground") && canAttack)
+        //                    检查在地面防止空中攻击，检查动画tag触发连击
+        if (pInput.attack && (CheckStatu("Ground") || CheckStatuTag("attack")) && canAttack)
             anim.SetTrigger("attack");
 
         if(!cameraController.isLock)
@@ -148,6 +148,13 @@ public class ActorController : MonoBehaviour {
     {
         int layerIndex = anim.GetLayerIndex(layerName);
         bool result = anim.GetCurrentAnimatorStateInfo(layerIndex).IsName(stateName);
+        return result;
+    }
+
+    public bool CheckStatuTag(string tagName, string layerName = "Base Layer")
+    {
+        int layerIndex = anim.GetLayerIndex(layerName);
+        bool result = anim.GetCurrentAnimatorStateInfo(layerIndex).IsTag(tagName);
         return result;
     }
 
@@ -221,26 +228,15 @@ public class ActorController : MonoBehaviour {
     {
         thrustVec = model.transform.forward * anim.GetFloat("attack1hAVelocity");
         //使用差值法使动画图层的权重缓慢增加
-        anim.SetLayerWeight(attackLayerIndex, Mathf.Lerp(anim.GetLayerWeight(attackLayerIndex), lerpTarget, 0.4f));
+        //anim.SetLayerWeight(attackLayerIndex, Mathf.Lerp(anim.GetLayerWeight(attackLayerIndex), lerpTarget, 0.4f));
     }
 
     public void OnAttack1hAEnter()
     {
         pInput.interactive = false;
-        lerpTarget = 1.0f;
+        //lerpTarget = 1.0f;
     }
 
-    public void OnAttackLayerIdleEnter()
-    {
-        pInput.interactive = true;
-        lerpTarget = 0.0f;
-    }
-
-    public void OnAttackLayerIdleUpdate()
-    {
-        //使用差值法使动画图层的权重缓慢增加
-        anim.SetLayerWeight(attackLayerIndex, Mathf.Lerp(anim.GetLayerWeight(attackLayerIndex), lerpTarget, 0.4f));
-    }
 
     /// <summary>
     /// 拿出动画的root motion位移量
@@ -248,7 +244,7 @@ public class ActorController : MonoBehaviour {
     /// <param name="_deltaPos"></param>
     public void OnRootMotionUpdate(object _deltaPos)
     {
-        if (CheckStatu("Attack1hC", "Attack"))
+        if (CheckStatu("Attack1hC"))
         {
             //这里注意变量的装箱拆箱操作
             deltaPos += (deltaPos + (Vector3)_deltaPos) / 2.0f;//做位移量模糊处理
