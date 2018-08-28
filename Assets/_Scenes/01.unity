@@ -350,7 +350,7 @@ MonoBehaviour:
   keyD: mouse 1
   keyE: p
   keyF: f
-  mouseEnable: 0
+  mouseEnable: 1
   mouseSensitivity: 1
 --- !u!114 &321607461
 MonoBehaviour:

@@ -27,10 +27,14 @@ public abstract class IUserInput : MonoBehaviour {
     // trigger once signal
     public bool jump = false;
     public bool lastJump = false;
-    public bool attack = false;
+    //public bool attack = false;
     public bool lastAttack = false;
     public bool roll = false;
     public bool lockon = false;
+    public bool lb;
+    public bool lt;
+    public bool rb;
+    public bool rt;
 
     // double trigger
 

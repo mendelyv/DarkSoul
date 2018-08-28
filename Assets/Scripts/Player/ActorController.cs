@@ -51,6 +51,8 @@ public class ActorController : MonoBehaviour {
     //状态机动画图层index
     private int attackLayerIndex;
 
+    public bool leftIsShield = true;
+
 	void Awake () {
         IUserInput[] inputs = GetComponents<IUserInput>();
         foreach (var input in inputs)
@@ -94,16 +96,47 @@ public class ActorController : MonoBehaviour {
             anim.SetFloat("forward",localVec.z * ((pInput.run) ? 2.0f : 1.0f));
             anim.SetFloat("right", localVec.x * ((pInput.run) ? 2.0f : 1.0f));            
         }
-        anim.SetBool("defense", pInput.defense);
+        //anim.SetBool("defense", pInput.defense);
+
+        if(leftIsShield)
+        {
+            if (CheckStatu("Ground"))
+            {
+                anim.SetLayerWeight(anim.GetLayerIndex("defense"), 1);
+                anim.SetBool("defense", pInput.defense);
+            }
+            else
+            {
+                anim.SetLayerWeight(anim.GetLayerIndex("defense"), 0);
+            }
+        }
+        else
+        {
+            anim.SetLayerWeight(anim.GetLayerIndex("defense"),0);
+        }
 
         if (pInput.jump)
         {
             anim.SetTrigger("jump");
             canAttack = false;
         }
+
         //                    检查在地面防止空中攻击，检查动画tag触发连击
-        if (pInput.attack && (CheckStatu("Ground") || CheckStatuTag("attack")) && canAttack)
-            anim.SetTrigger("attack");
+        if ((pInput.rb || pInput.lb) && (CheckStatu("Ground") || CheckStatuTag("attack")) && canAttack)
+        {
+            //分左右手攻击输入
+            if(pInput.rb)
+            {
+                anim.SetBool("R0L1", false);
+                anim.SetTrigger("attack");
+            }
+            else if(pInput.lb && !leftIsShield)
+            {
+                anim.SetBool("R0L1", true);
+                anim.SetTrigger("attack");
+            }
+
+        }
 
         if(!cameraController.isLock)
         {

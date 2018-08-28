@@ -26,17 +26,21 @@ public class KeyboardInput : IUserInput
 
     public string keyA = "left shift";
     public string keyB = "space";
-    public string keyC = "mouse 0";
-    public string keyD = "mouse 1";
-    public string keyE = "p";
+    public string keyML = "mouse 0";
+    public string keyMR = "mouse 1";
+    public string keyE = "e";
     public string keyF = "f";
+    public string keyQ = "q";
+    public string keyR = "r";
 
     public MyButton buttonA = new MyButton();
     public MyButton buttonB = new MyButton();
-    public MyButton buttonC = new MyButton();
-    public MyButton buttonD = new MyButton();
+    public MyButton buttonML = new MyButton();
+    public MyButton buttonMR = new MyButton();
     public MyButton buttonE = new MyButton();
     public MyButton buttonF = new MyButton();
+    public MyButton buttonQ = new MyButton();
+    public MyButton buttonR = new MyButton();
 
     [Header("===== Mouse Setting =====")]
     public bool mouseEnable = true;
@@ -49,10 +53,12 @@ public class KeyboardInput : IUserInput
 
         buttonA.Tick(Input.GetKey(keyA));
         buttonB.Tick(Input.GetKey(keyB));
-        buttonC.Tick(Input.GetKey(keyC));
-        buttonD.Tick(Input.GetKey(keyD));
+        buttonML.Tick(Input.GetKey(keyML));
+        buttonMR.Tick(Input.GetKey(keyMR));
         buttonE.Tick(Input.GetKey(keyE));
         buttonF.Tick(Input.GetKey(keyF));
+        buttonQ.Tick(Input.GetKey(keyQ));
+        buttonR.Tick(Input.GetKey(keyR));
 
         //转动摄像机的输入量
         if (mouseEnable)
@@ -92,9 +98,12 @@ public class KeyboardInput : IUserInput
         roll = buttonA.OnReleased && buttonA.IsDelaying;//如果按下去很快松开就翻滚
         //奔跑键按下会有延迟开始跑动，并且松开时还会有跑动的延迟，方便连击
         run = (buttonA.IsPressing && !buttonA.IsDelaying) || buttonA.IsExtending;
-        defense = buttonD.IsPressing;
+        defense = buttonML.IsPressing;
         jump = buttonA.OnPressed && buttonA.IsExtending;
-        attack = buttonC.OnPressed;
+        rb = buttonMR.OnPressed;
+        rt = buttonE.OnPressed;
+        lt = buttonQ.OnPressed;
+        lb = buttonML.OnPressed;
         lockon = buttonF.OnPressed;
 
 	}

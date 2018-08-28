@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkSoul.CSharp", "DarkSoul.CSharp.csproj", "{DEA37A38-9684-64F8-580B-276D4B218ED6}"
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DarkSoul", "DarkSoul.csproj", "{252E5FD5-609A-E9FE-8AFC-768497992510}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,10 +9,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{DEA37A38-9684-64F8-580B-276D4B218ED6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DEA37A38-9684-64F8-580B-276D4B218ED6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DEA37A38-9684-64F8-580B-276D4B218ED6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DEA37A38-9684-64F8-580B-276D4B218ED6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{252E5FD5-609A-E9FE-8AFC-768497992510}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{252E5FD5-609A-E9FE-8AFC-768497992510}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{252E5FD5-609A-E9FE-8AFC-768497992510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{252E5FD5-609A-E9FE-8AFC-768497992510}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
