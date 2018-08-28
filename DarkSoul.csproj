@@ -284,6 +284,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\DummyIUserInput.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyInput.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMClearSignals.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMOnEnter.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMOnExit.cs" />

@@ -92,9 +92,9 @@ public class KeyboardInput : IUserInput
 
         //计算多方向键入的位移量
         Dirmag = Mathf.Sqrt((_dirForward * _dirForward) + (_dirRight * _dirRight));
-        
         //计算多方向键入的方向向量，比如 w a 一起按为左前方
         planarVec = _dirRight * transform.right + _dirForward * transform.forward;
+
         roll = buttonA.OnReleased && buttonA.IsDelaying;//如果按下去很快松开就翻滚
         //奔跑键按下会有延迟开始跑动，并且松开时还会有跑动的延迟，方便连击
         run = (buttonA.IsPressing && !buttonA.IsDelaying) || buttonA.IsExtending;

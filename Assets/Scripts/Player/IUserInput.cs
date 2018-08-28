@@ -57,5 +57,13 @@ public abstract class IUserInput : MonoBehaviour {
         return output;
     }
 
+    protected void UpdateDirMagVec(float _dirForward,float _dirRight)
+    {
+        //计算多方向键入的位移量
+        Dirmag = Mathf.Sqrt((_dirForward * _dirForward) + (_dirRight * _dirRight));
+        //计算多方向键入的方向向量，比如 w a 一起按为左前方
+        planarVec = _dirRight * transform.right + _dirForward * transform.forward;
+    }
+
 //class end
 }

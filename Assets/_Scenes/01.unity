@@ -363,7 +363,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 307879008}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -388,7 +388,7 @@ GameObject:
   - component: {fileID: 321607460}
   - component: {fileID: 321607461}
   - component: {fileID: 321607463}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: PlayerHandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,7 +556,7 @@ MonoBehaviour:
   verticalSpeed: 80
   cameraDampValue: 0.07
   lockDot: {fileID: 1597833842}
-  isLock: 0
+  lockState: 0
 --- !u!1 &391940584
 GameObject:
   m_ObjectHideFlags: 0
@@ -629,7 +629,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 391940584}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -880,7 +880,7 @@ MonoBehaviour:
   verticalSpeed: 80
   cameraDampValue: 0.07
   lockDot: {fileID: 1597833842}
-  isLock: 0
+  lockState: 0
 --- !u!4 &585242287
 Transform:
   m_ObjectHideFlags: 0
@@ -1326,7 +1326,7 @@ CapsuleCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1346614999}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.5
   m_Height: 2
@@ -1406,7 +1406,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1516601267}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c65ea22bb7691345b9c7ef42f5a27cc, type: 3}
+  m_Script: {fileID: 11500000, guid: b8979f13719f93a45b0f8f63522e5d28, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dUp: 0
@@ -1427,24 +1427,6 @@ MonoBehaviour:
   rb: 0
   rt: 0
   interactive: 1
-  keyForward: w
-  keyBack: s
-  keyLeft: a
-  keyRight: d
-  upArrow: up
-  downArrow: down
-  leftArrow: left
-  rightArrow: right
-  keyA: left shift
-  keyB: space
-  keyML: mouse 0
-  keyMR: mouse 1
-  keyE: p
-  keyF: f
-  keyQ: q
-  keyR: r
-  mouseEnable: 1
-  mouseSensitivity: 1
 --- !u!136 &1516601271
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1779,7 +1761,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1770202481}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
