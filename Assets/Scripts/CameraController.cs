@@ -13,11 +13,12 @@ using UnityEngine.UI;
 public class CameraController : MonoBehaviour {
 
     private IUserInput pInput;
+    public bool AI = false;//使用这个变量让一个脚本玩家跟AI都可以用
     public float horizontalSpeed = 100.0f;
     public float verticalSpeed = 80.0f;
     public float cameraDampValue = 0.07f;//相机追赶的Damp时间值
     public Image lockDot;//锁定的提示点
-    public bool isLock;
+    public bool lockState;
 
     private float tmpEulerX;//相机的X轴的欧拉度数
     //private float tmpEulerY;//相机的Y轴的欧拉度数
@@ -29,17 +30,21 @@ public class CameraController : MonoBehaviour {
 
     private Vector3 cameraDampVelocity;
 
-	void Awake () {
+	void Start () {
         cameraHandle = transform.parent.gameObject;
         playerHandle = cameraHandle.transform.parent.gameObject;
         tmpEulerX = 20.0f;
         ActorController ac = playerHandle.GetComponent<ActorController>();
         model = ac.model;
         pInput = ac.pInput;
-        _camera = Camera.main.gameObject;
-        //Cursor.lockState = CursorLockMode.Locked;//设置鼠标隐藏
-        lockDot.enabled = false;
-        isLock = false;
+        lockState = false;
+
+        if (!AI)
+        {
+            _camera = Camera.main.gameObject;
+            //Cursor.lockState = CursorLockMode.Locked;//设置鼠标隐藏
+            lockDot.enabled = false;
+        }
 	}
 	
     //由于模型的移动大部分使用的是物理引擎，所以相机的跟随也在物理引擎中做
@@ -66,27 +71,38 @@ public class CameraController : MonoBehaviour {
             cameraHandle.transform.LookAt(lockTarget.obj.transform);
         }
 
-        _camera.transform.position = Vector3.SmoothDamp(_camera.transform.position,
-                                                        transform.position,
-                                                        ref cameraDampVelocity,
-                                                        cameraDampValue);
-        //_camera.transform.position = transform.position;
-        //_camera.transform.eulerAngles = transform.eulerAngles;
-        _camera.transform.LookAt(cameraHandle.transform);
+        if(!AI)
+        {
+            _camera.transform.position = Vector3.SmoothDamp(_camera.transform.position,
+                                                            transform.position,
+                                                            ref cameraDampVelocity,
+                                                            cameraDampValue);
+            //_camera.transform.position = transform.position;
+            //_camera.transform.eulerAngles = transform.eulerAngles;
+            _camera.transform.LookAt(cameraHandle.transform);
+
+        }
     }
 
     private void Update()
     {
         if(lockTarget != null)
         {
-            lockDot.rectTransform.position = Camera.main.WorldToScreenPoint(lockTarget.obj.transform.position + new Vector3(0, lockTarget.halfHeight, 0));
+            if(!AI)
+                lockDot.rectTransform.position = Camera.main.WorldToScreenPoint(lockTarget.obj.transform.position + new Vector3(0, lockTarget.halfHeight, 0));
             if(Vector3.Distance(model.transform.position,lockTarget.obj.transform.position) > 10.0f)
             {
-                lockTarget = null;
-                isLock = false;
-                lockDot.enabled = false;
+                LockProcessA(null, false, false);
             }
         }
+    }
+
+    private void LockProcessA(LockTarget _lockTarget,bool _lockState,bool _lockDotEnable)
+    {
+        lockTarget = _lockTarget;
+        lockState = _lockState;
+        if(!AI)
+            lockDot.enabled = _lockDotEnable;
     }
 
 
@@ -99,9 +115,7 @@ public class CameraController : MonoBehaviour {
         
         if(cols.Length == 0)
         {
-            lockTarget = null;
-            lockDot.enabled = false;
-            isLock = false;
+            LockProcessA(null, false, false);
         }
         else
         {
@@ -109,14 +123,10 @@ public class CameraController : MonoBehaviour {
             {
                 if(lockTarget != null && lockTarget.obj == item.gameObject)
                 {
-                    lockTarget = null;
-                    lockDot.enabled = false;
-                    isLock = false;
+                    LockProcessA(null, false, false);
                     break;
                 }
-                lockTarget = new LockTarget(item.gameObject,item.bounds.extents.y);
-                lockDot.enabled = true;
-                isLock = true;
+                LockProcessA(new LockTarget(item.gameObject, item.bounds.extents.y), true, true);
                 break;
             }
         }

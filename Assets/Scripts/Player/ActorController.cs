@@ -85,7 +85,7 @@ public class ActorController : MonoBehaviour {
             cameraController.LockUnlock();
         }
 
-        if(!cameraController.isLock)
+        if(!cameraController.lockState)
         {
             anim.SetFloat("forward", pInput.Dirmag * Mathf.Lerp(anim.GetFloat("forward"), ((pInput.run) ? 2.0f : 1.0f), 0.3f));
             anim.SetFloat("right", 0.0f);
@@ -138,7 +138,7 @@ public class ActorController : MonoBehaviour {
 
         }
 
-        if(!cameraController.isLock)
+        if(!cameraController.lockState)//不是锁定状态自由移动
         {
             if(pInput.Dirmag > 0.1f)
             {
