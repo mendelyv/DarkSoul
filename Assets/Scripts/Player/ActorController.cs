@@ -273,6 +273,7 @@ public class ActorController : MonoBehaviour {
     public void OnHitEnter()
     {
         pInput.interactive = false;
+        pInput.planarVec = Vector3.zero;
     }
 
 
@@ -287,6 +288,11 @@ public class ActorController : MonoBehaviour {
             //这里注意变量的装箱拆箱操作
             deltaPos += (deltaPos + (Vector3)_deltaPos) / 2.0f;//做位移量模糊处理
         }
+    }
+
+    public void IssueTrigger(string triggerName)
+    {
+        anim.SetTrigger(triggerName);
     }
 
 //class end

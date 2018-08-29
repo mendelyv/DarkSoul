@@ -239,6 +239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23e53534e0ea0b0489fa1bf60568d4dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  am: {fileID: 0}
 --- !u!136 &67817269
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -330,7 +331,7 @@ GameObject:
   - component: {fileID: 307879010}
   m_Layer: 9
   m_Name: weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -414,6 +415,7 @@ GameObject:
   - component: {fileID: 321607463}
   - component: {fileID: 321607460}
   - component: {fileID: 321607461}
+  - component: {fileID: 321607466}
   - component: {fileID: 321607465}
   m_Layer: 11
   m_Name: PlayerHandle
@@ -549,6 +551,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac528444a8cfafe4e95f9477e7bde559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &321607466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 321607459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f3c913d8503064fa3fc17f6762e9c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bm: {fileID: 0}
+  ac: {fileID: 0}
 --- !u!1 &332343073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,7 +1320,7 @@ GameObject:
   - component: {fileID: 1346615001}
   m_Layer: 9
   m_Name: weapon
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

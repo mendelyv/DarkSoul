@@ -6,11 +6,12 @@ public class ActorManager : MonoBehaviour {
 
     public BattleManager bm;
 
-    
+    public ActorController ac;
 
 	// Use this for initialization
 	void Awake () {
         GameObject sensor = transform.Find("sensor").gameObject;
+        ac = GetComponent<ActorController>();
         bm = sensor.GetComponent<BattleManager>();
         if(bm == null)
         {
@@ -23,4 +24,11 @@ public class ActorManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void DoDamage()
+    {
+        ac.IssueTrigger("hit");
+    }
+
+
 }

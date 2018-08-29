@@ -19,6 +19,10 @@ public class BattleManager : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
+        //Debug.Log(other.name);
+        if(other.tag.Equals("Weapon"))
+        {
+            am.DoDamage();
+        }
     }
 }
