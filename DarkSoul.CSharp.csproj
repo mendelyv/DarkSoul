@@ -283,10 +283,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\CameraController.cs" />
+    <Compile Include="Assets\Scripts\Enemy\DummyIUserInput.cs" />
+    <Compile Include="Assets\Scripts\Enemy\EnemyInput.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMClearSignals.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMOnEnter.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMOnExit.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMOnUpdate.cs" />
+    <Compile Include="Assets\Scripts\Manager\ActorManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\BattleManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\WeaponManager.cs" />
     <Compile Include="Assets\Scripts\MyButton.cs" />
     <Compile Include="Assets\Scripts\MyTimer.cs" />
     <Compile Include="Assets\Scripts\Player\ActorController.cs" />
@@ -296,6 +301,7 @@
     <Compile Include="Assets\Scripts\Player\OnGroundSensor.cs" />
     <Compile Include="Assets\Scripts\Player\RootMotionControl.cs" />
     <Compile Include="Assets\Scripts\Player\TriggerControl.cs" />
+    <Compile Include="Assets\Scripts\TestHit.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2013\UnityVS.CSharp.targets" />
 </Project>

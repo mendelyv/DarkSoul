@@ -141,7 +141,7 @@ ModelImporter:
     400130: mixamorig:Spine1
     400132: mixamorig:Spine2
     400134: //RootNode
-    7400000: slash1
+    7400000: Attack1hA
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -171,7 +171,7 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: slash1
+      name: Attack1hA
       takeName: mixamo.com
       firstFrame: 0
       lastFrame: 45
@@ -216,6 +216,20 @@ ModelImporter:
       - time: 0.40116277
         functionName: ResetTrigger
         data: attack
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.34320986
+        functionName: WeaponEnable
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.48148146
+        functionName: WeaponDisable
+        data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
         intParameter: 0
