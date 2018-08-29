@@ -192,8 +192,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 67817266}
+  - component: {fileID: 67817269}
   - component: {fileID: 67817267}
-  m_Layer: 0
+  - component: {fileID: 67817268}
+  m_Layer: 12
   m_Name: sensor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -226,6 +228,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   capcol: {fileID: 321607462}
   offset: 0.3
+--- !u!114 &67817268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67817265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23e53534e0ea0b0489fa1bf60568d4dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &67817269
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 67817265}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.25
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &201435969
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,9 +411,10 @@ GameObject:
   m_Component:
   - component: {fileID: 321607464}
   - component: {fileID: 321607462}
+  - component: {fileID: 321607463}
   - component: {fileID: 321607460}
   - component: {fileID: 321607461}
-  - component: {fileID: 321607463}
+  - component: {fileID: 321607465}
   m_Layer: 11
   m_Name: PlayerHandle
   m_TagString: Untagged
@@ -440,7 +467,7 @@ MonoBehaviour:
   keyF: f
   keyQ: q
   keyR: r
-  mouseEnable: 1
+  mouseEnable: 0
   mouseSensitivity: 1
 --- !u!114 &321607461
 MonoBehaviour:
@@ -511,6 +538,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &321607465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 321607459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac528444a8cfafe4e95f9477e7bde559, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &332343073
 GameObject:
   m_ObjectHideFlags: 0

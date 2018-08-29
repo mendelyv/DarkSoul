@@ -270,6 +270,11 @@ public class ActorController : MonoBehaviour {
         //lerpTarget = 1.0f;
     }
 
+    public void OnHitEnter()
+    {
+        pInput.interactive = false;
+    }
+
 
     /// <summary>
     /// 拿出动画的root motion位移量
