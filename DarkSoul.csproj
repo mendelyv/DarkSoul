@@ -290,8 +290,10 @@
     <Compile Include="Assets\Scripts\FSM\FSMOnEnter.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMOnExit.cs" />
     <Compile Include="Assets\Scripts\FSM\FSMOnUpdate.cs" />
+    <Compile Include="Assets\Scripts\Helper\TransformHelpers.cs" />
     <Compile Include="Assets\Scripts\Manager\ActorManager.cs" />
     <Compile Include="Assets\Scripts\Manager\BattleManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\WeaponManager.cs" />
     <Compile Include="Assets\Scripts\MyButton.cs" />
     <Compile Include="Assets\Scripts\MyTimer.cs" />
     <Compile Include="Assets\Scripts\Player\ActorController.cs" />

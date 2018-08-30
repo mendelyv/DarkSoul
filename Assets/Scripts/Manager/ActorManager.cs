@@ -7,6 +7,7 @@ public class ActorManager : MonoBehaviour {
     public BattleManager bm;
 
     public ActorController ac;
+    public WeaponManager wm;
 
 	// Use this for initialization
 	void Awake () {
@@ -18,6 +19,14 @@ public class ActorManager : MonoBehaviour {
             bm = sensor.AddComponent<BattleManager>();
         }
         bm.am = this;
+
+        wm = ac.model.GetComponent<WeaponManager>();
+        if(wm == null)
+        {
+            ac.model.AddComponent<WeaponManager>();
+        }
+        wm.am = this;
+
 	}
 	
 	// Update is called once per frame

@@ -4,7 +4,17 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour {
 
-    public CapsuleCollider weaponCol;
+    private Collider weaponCol;
+
+    public ActorManager am;
+    public GameObject whR;
+    public GameObject whL;
+
+    private void Start()
+    {
+        weaponCol = whR.GetComponentInChildren<Collider>();
+        Debug.Log(transform.DeepFind("weaponHandleR"));
+    }
 
     public void WeaponEnable()
     {
