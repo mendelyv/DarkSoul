@@ -36,6 +36,7 @@ public class ActorManager : MonoBehaviour {
 
     public void DoDamage()
     {
+        //Debug.Log("damage");
         ac.IssueTrigger("hit");
     }
 

@@ -122,7 +122,7 @@ public class ActorController : MonoBehaviour {
         }
 
         //                    检查在地面防止空中攻击，检查动画tag触发连击
-        if ((pInput.rb || pInput.lb) && (CheckStatu("Ground") || CheckStatuTag("attack")) && canAttack)
+        if ((pInput.rb || pInput.lb) && (CheckStatu("Ground") || CheckStatuTag("attackR") || CheckStatuTag("attackL")) && canAttack)
         {
             //分左右手攻击输入
             if(pInput.rb)
@@ -268,6 +268,11 @@ public class ActorController : MonoBehaviour {
     {
         pInput.interactive = false;
         //lerpTarget = 1.0f;
+    }
+
+    public void OnAttackExit()
+    {
+        model.SendMessage("WeaponDisable");
     }
 
     public void OnHitEnter()

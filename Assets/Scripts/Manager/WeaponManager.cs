@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class WeaponManager : MonoBehaviour {
 
-    private Collider weaponCol;
+    private Collider weaponColL;
+    private Collider weaponColR;
 
     public ActorManager am;
     public GameObject whR;
@@ -12,18 +13,24 @@ public class WeaponManager : MonoBehaviour {
 
     private void Start()
     {
-        weaponCol = whR.GetComponentInChildren<Collider>();
-        Debug.Log(transform.DeepFind("weaponHandleR"));
+        whL = transform.DeepFind("weaponHandleL").gameObject;
+        whR = transform.DeepFind("weaponHandleR").gameObject;
+        weaponColR = whR.GetComponentInChildren<Collider>();
+        weaponColL = whL.GetComponentInChildren<Collider>();
     }
 
     public void WeaponEnable()
     {
-        weaponCol.enabled = true;
+        if (am.ac.CheckStatuTag("attackR"))
+            weaponColR.enabled = true;
+        else if (am.ac.CheckStatuTag("attackL"))
+            weaponColL.enabled = true;
     }
 
     public void WeaponDisable()
     {
-        weaponCol.enabled = false;
+        weaponColL.enabled = false;
+        weaponColR.enabled = false;
     }
 
 

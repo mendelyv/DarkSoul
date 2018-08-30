@@ -112,6 +112,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   onEnterMessages:
   - OnJumpEnter
+--- !u!114 &114199084349576416
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2456e34b3146bd54e98d219516e71d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onExitMessages:
+  - OnAttackExit
 --- !u!114 &114231804354132872
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -508,6 +521,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: attack
     m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: R0L1
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102496918050860996}
   m_Solo: 0
@@ -622,6 +638,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: attack
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: R0L1
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102126165262630106}
   m_Solo: 0
@@ -666,6 +685,9 @@ AnimatorStateTransition:
   m_Conditions:
   - m_ConditionMode: 1
     m_ConditionEvent: attack
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: R0L1
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102687540800531472}
@@ -919,6 +941,9 @@ AnimatorStateTransition:
   - m_ConditionMode: 1
     m_ConditionEvent: attack
     m_EventTreshold: 0
+  - m_ConditionMode: 1
+    m_ConditionEvent: R0L1
+    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 1102524783474314772}
   m_Solo: 0
@@ -1077,7 +1102,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 7c3ac43c854208542b73444c482c0712, type: 3}
-  m_Tag: attack
+  m_Tag: attackL
   m_SpeedParameter: 
   m_MirrorParameter: R0L1
   m_CycleOffsetParameter: 
@@ -1131,7 +1156,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 4831e51d07d01434a9767c5e91b2a464, type: 3}
-  m_Tag: attack
+  m_Tag: attackL
   m_SpeedParameter: 
   m_MirrorParameter: R0L1
   m_CycleOffsetParameter: 
@@ -1247,7 +1272,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: e1bf00344cfd4af4bbf236b6b44c0846, type: 3}
-  m_Tag: attack
+  m_Tag: attackR
   m_SpeedParameter: 
   m_MirrorParameter: R0L1
   m_CycleOffsetParameter: 
@@ -1274,7 +1299,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: e1bf00344cfd4af4bbf236b6b44c0846, type: 3}
-  m_Tag: attack
+  m_Tag: attackL
   m_SpeedParameter: 
   m_MirrorParameter: R0L1
   m_CycleOffsetParameter: 
@@ -1329,7 +1354,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 4831e51d07d01434a9767c5e91b2a464, type: 3}
-  m_Tag: attack
+  m_Tag: attackR
   m_SpeedParameter: 
   m_MirrorParameter: R0L1
   m_CycleOffsetParameter: 
@@ -1355,7 +1380,7 @@ AnimatorState:
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
   m_Motion: {fileID: 7400000, guid: 7c3ac43c854208542b73444c482c0712, type: 3}
-  m_Tag: attack
+  m_Tag: attackR
   m_SpeedParameter: 
   m_MirrorParameter: R0L1
   m_CycleOffsetParameter: 
@@ -1485,7 +1510,8 @@ AnimatorStateMachine:
   - {fileID: 1109923690624830516}
   - {fileID: 1109499567661323250}
   m_StateMachineTransitions: {}
-  m_StateMachineBehaviours: []
+  m_StateMachineBehaviours:
+  - {fileID: 114199084349576416}
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 540, y: 156, z: 0}
