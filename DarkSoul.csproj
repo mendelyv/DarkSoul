@@ -293,6 +293,8 @@
     <Compile Include="Assets\Scripts\Helper\TransformHelpers.cs" />
     <Compile Include="Assets\Scripts\Manager\ActorManager.cs" />
     <Compile Include="Assets\Scripts\Manager\BattleManager.cs" />
+    <Compile Include="Assets\Scripts\Manager\IActorManagerInterface.cs" />
+    <Compile Include="Assets\Scripts\Manager\StateManager.cs" />
     <Compile Include="Assets\Scripts\Manager\WeaponManager.cs" />
     <Compile Include="Assets\Scripts\MyButton.cs" />
     <Compile Include="Assets\Scripts\MyTimer.cs" />

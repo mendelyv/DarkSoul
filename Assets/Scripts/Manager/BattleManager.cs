@@ -2,11 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// class name : BattleManager
+/// description : 负责检测碰撞
+/// /// time : 2018.8.28
+/// @author : 杨浩然
+/// </summary>
 [RequireComponent(typeof(CapsuleCollider))]//这行特性  会让这个脚本在挂载场景物体时  如果没有这个组件就加载一个
-public class BattleManager : MonoBehaviour {
+public class BattleManager : IActorManagerInterface {
 
     private CapsuleCollider defCol;
-    public ActorManager am;
+    //public ActorManager am;
 
     private void Start()
     {
@@ -22,7 +28,7 @@ public class BattleManager : MonoBehaviour {
         //Debug.Log(other.name);
         if (other.tag.Equals("Weapon"))
         {
-            am.DoDamage();
+            am.TryDoDamage();
         }
     }
 
