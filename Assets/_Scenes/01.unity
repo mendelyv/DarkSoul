@@ -548,9 +548,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 321607459}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac528444a8cfafe4e95f9477e7bde559, type: 3}
+  m_Script: {fileID: 11500000, guid: 0bd3ee07bc8d65f41bb0f7601097897d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  am: {fileID: 0}
+  HPMax: 15
+  HP: 15
 --- !u!114 &321607466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1421,6 +1424,7 @@ GameObject:
   - component: {fileID: 1516601270}
   - component: {fileID: 1516601269}
   - component: {fileID: 1516601273}
+  - component: {fileID: 1516601274}
   m_Layer: 10
   m_Name: EnemyHandle
   m_TagString: Untagged
@@ -1541,6 +1545,20 @@ MonoBehaviour:
   ac: {fileID: 0}
   wm: {fileID: 0}
   sm: {fileID: 0}
+--- !u!114 &1516601274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1516601267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd3ee07bc8d65f41bb0f7601097897d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  am: {fileID: 0}
+  HPMax: 15
+  HP: 15
 --- !u!1 &1551040163
 GameObject:
   m_ObjectHideFlags: 0
