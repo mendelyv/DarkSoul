@@ -44,16 +44,28 @@ public class ActorManager : MonoBehaviour {
     }
 	
 
-	void Update () {
-		
-	}
-
-
     public void TryDoDamage()
     {
-        sm.AddHP(-5.0f);
-        ac.IssueTrigger("hit");
+        if(sm.HP >= 5.0f)
+            sm.AddHP(-5.0f);
 
+    }
+
+    public void Hit()
+    {
+        ac.IssueTrigger("hit");
+    }
+
+    public void Die()
+    {
+        ac.IssueTrigger("die");
+        ac.pInput.interactive = false;
+        if(ac.cameraController.lockState)
+        {
+            ac.cameraController.LockUnlock();
+        }
+
+        ac.cameraController.enabled = false;
     }
 
 

@@ -565,6 +565,7 @@ MonoBehaviour:
   bm: {fileID: 0}
   ac: {fileID: 0}
   wm: {fileID: 0}
+  sm: {fileID: 0}
 --- !u!1 &332343073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,6 +1540,7 @@ MonoBehaviour:
   bm: {fileID: 0}
   ac: {fileID: 0}
   wm: {fileID: 0}
+  sm: {fileID: 0}
 --- !u!1 &1551040163
 GameObject:
   m_ObjectHideFlags: 0

@@ -15,13 +15,23 @@ public class StateManager : IActorManagerInterface {
 
     private void Start()
     {
-        HP = Mathf.Clamp(HP, 0, HPMax);
+        //HP = Mathf.Clamp(HP, 0, HPMax);
+        HP = HPMax;
     }
 
     public void AddHP(float value)
     {
         HP += value;
         HP = Mathf.Clamp(HP, 0, HPMax);
+
+        if(HP > 0)
+        {
+            am.Hit();
+        }
+        else
+        {
+            am.Die();
+        }
     }
 
 //end class
