@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -495,7 +495,7 @@ MonoBehaviour:
   anim: {fileID: 0}
   lockPlanar: 0
   trackDirection: 0
-  leftIsShield: 0
+  leftIsShield: 1
 --- !u!136 &321607462
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -554,6 +554,17 @@ MonoBehaviour:
   am: {fileID: 0}
   HPMax: 15
   HP: 15
+  isGround: 0
+  isJump: 0
+  isFall: 0
+  isRoll: 0
+  isJab: 0
+  isAttack: 0
+  isHit: 0
+  isDie: 0
+  isBlocked: 0
+  isDefense: 0
+  isAllowDefense: 0
 --- !u!114 &321607466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1559,6 +1570,17 @@ MonoBehaviour:
   am: {fileID: 0}
   HPMax: 15
   HP: 15
+  isGround: 0
+  isJump: 0
+  isFall: 0
+  isRoll: 0
+  isJab: 0
+  isAttack: 0
+  isHit: 0
+  isDie: 0
+  isBlocked: 0
+  isDefense: 0
+  isAllowDefense: 0
 --- !u!1 &1551040163
 GameObject:
   m_ObjectHideFlags: 0

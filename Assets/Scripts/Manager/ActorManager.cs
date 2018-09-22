@@ -46,9 +46,36 @@ public class ActorManager : MonoBehaviour {
 
     public void TryDoDamage()
     {
-        if(sm.HP >= 5.0f)
-            sm.AddHP(-5.0f);
+        if(sm.isDefense)
+        {
+            //attack should be blocked
+            Blocked();
+        }
+        else
+        {
+            if(sm.HP <= 0.0f)
+            {
+                //already dead
+            }
+            else
+            {
+                sm.AddHP(-5.0f);
+                if (sm.HP > 0)
+                {
+                    Hit();
+                }
+                else
+                {
+                    Die();
+                }
+            }
+        }
 
+    }
+
+    public void Blocked()
+    {
+        ac.IssueTrigger("blocked");
     }
 
     public void Hit()

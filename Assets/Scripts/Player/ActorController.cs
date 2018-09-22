@@ -49,7 +49,7 @@ public class ActorController : MonoBehaviour {
     public bool trackDirection = false;
 
     //状态机动画图层index
-    private int attackLayerIndex;
+    //private int attackLayerIndex;
 
     public bool leftIsShield = true;
 
@@ -67,7 +67,7 @@ public class ActorController : MonoBehaviour {
         rig = GetComponent<Rigidbody>();
         capsuleCollider = GetComponent<CapsuleCollider>();
 
-        attackLayerIndex = anim.GetLayerIndex("Attack");
+        //attackLayerIndex = anim.GetLayerIndex("Attack");
 	}
 	
 
@@ -100,7 +100,7 @@ public class ActorController : MonoBehaviour {
 
         if(leftIsShield)
         {
-            if (CheckStatu("Ground"))
+            if (CheckStatu("Ground") || CheckStatu("blocked"))
             {
                 anim.SetLayerWeight(anim.GetLayerIndex("defense"), 1);
                 anim.SetBool("defense", pInput.defense);
@@ -276,6 +276,17 @@ public class ActorController : MonoBehaviour {
     }
 
     public void OnHitEnter()
+    {
+        pInput.interactive = false;
+        pInput.planarVec = Vector3.zero;
+    }
+
+    public void OnBlockedEnter()
+    {
+        pInput.interactive = false;
+    }
+
+    public void OnDeathEnter()
     {
         pInput.interactive = false;
         pInput.planarVec = Vector3.zero;
