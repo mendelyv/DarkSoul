@@ -27,6 +27,7 @@ public class StateManager : IActorManagerInterface {
 
     [Header("===== second order state flags =====")]
     public bool isAllowDefense;
+    public bool isImmortal;
 
     private void Start()
     {
@@ -49,6 +50,7 @@ public class StateManager : IActorManagerInterface {
 
         isAllowDefense = isGround || isBlocked;
         isDefense = isAllowDefense && am.ac.CheckStatu("defense1h", "defense");
+        isImmortal = isRoll || isJab;
     }
 
     public void AddHP(float value)
