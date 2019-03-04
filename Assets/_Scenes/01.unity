@@ -565,6 +565,7 @@ MonoBehaviour:
   isBlocked: 0
   isDefense: 0
   isAllowDefense: 0
+  isImmortal: 0
 --- !u!114 &321607466
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1112,18 +1113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4660ecff9e8de5e46a693b5f2fe31378, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1032848239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1032848235}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6afa6f23b38a142bbd1601bafc3d86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angle: {x: 0, y: -58, z: 15}
 --- !u!114 &1032848240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1581,6 +1570,7 @@ MonoBehaviour:
   isBlocked: 0
   isDefense: 0
   isAllowDefense: 0
+  isImmortal: 0
 --- !u!1 &1551040163
 GameObject:
   m_ObjectHideFlags: 0
@@ -1803,18 +1793,6 @@ CapsuleCollider:
 GameObject:
   m_PrefabParentObject: {fileID: 100138, guid: 2f9d958fbcd96e44ca35a77a15e3187a, type: 3}
   m_PrefabInternal: {fileID: 444014948}
---- !u!114 &1664139091
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1664139090}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab6afa6f23b38a142bbd1601bafc3d86, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  angle: {x: 0, y: -58, z: 15}
 --- !u!114 &1664139092
 MonoBehaviour:
   m_ObjectHideFlags: 0

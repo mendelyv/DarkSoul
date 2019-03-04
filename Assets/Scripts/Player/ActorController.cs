@@ -102,11 +102,12 @@ public class ActorController : MonoBehaviour {
         {
             if (CheckStatu("Ground") || CheckStatu("blocked"))
             {
-                anim.SetLayerWeight(anim.GetLayerIndex("defense"), 1);
                 anim.SetBool("defense", pInput.defense);
+                anim.SetLayerWeight(anim.GetLayerIndex("defense"), 1);
             }
             else
             {
+                anim.SetBool("defense", false);
                 anim.SetLayerWeight(anim.GetLayerIndex("defense"), 0);
             }
         }
